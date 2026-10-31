@@ -40,7 +40,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Internal Server Error', error: err.message });
 });
 
-app.listen(PORT, () => {
-  console.log(`✨ Aurelia Jewellery API Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`✨ Aurelia Jewellery API Server running on http://localhost:${PORT}`);
+  });
+}
 
+module.exports = app;
