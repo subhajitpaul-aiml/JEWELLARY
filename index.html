@@ -23,17 +23,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            midnight: '#050507',
-            'midnight-card': '#0b0b12',
             'crimson-festive': '#e11d48',
             'crimson-dark': '#9f1239',
-            'sacred-gold': '#f59e0b',
-            'sacred-amber': '#fbbf24',
-            'divine-glow': '#ffedd5',
+            'sacred-gold': '#d97706',
+            'sacred-amber': '#b45309',
+            'divine-glow': '#fff1f2',
           },
           fontFamily: {
             sans: ['Outfit', 'sans-serif'],
@@ -41,26 +38,9 @@
             bengali: ['"Hind Siliguri"', 'sans-serif'],
           },
           boxShadow: {
-            'glow-gold': '0 0 25px -5px rgba(245, 158, 11, 0.35)',
-            'glow-crimson': '0 0 25px -5px rgba(225, 29, 72, 0.4)',
-            'glow-box': '0 4px 20px -2px rgba(245, 158, 11, 0.15)',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' },
-            },
-            pulseGlow: {
-              '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
-              '50%': { opacity: '0.9', transform: 'scale(1.04)' },
-            },
-            shimmer: {
-              '100%': { transform: 'translateX(100%)' },
-            }
-          },
-          animation: {
-            float: 'float 5s ease-in-out infinite',
-            pulseGlow: 'pulseGlow 6s ease-in-out infinite',
+            'glow-gold': '0 0 20px -3px rgba(217, 119, 6, 0.25)',
+            'glow-crimson': '0 0 22px -3px rgba(225, 29, 72, 0.35)',
+            'glow-box': '0 4px 20px -2px rgba(225, 29, 72, 0.08)',
           }
         }
       }
@@ -76,73 +56,90 @@
       width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #050507;
+      background: #f8fafc;
     }
     ::-webkit-scrollbar-thumb {
-      background: #272733;
+      background: #cbd5e1;
       border-radius: 4px;
-      border: 1px solid rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(225, 29, 72, 0.15);
     }
     ::-webkit-scrollbar-thumb:hover {
       background: #e11d48;
     }
 
-    /* Ambient radial glow textures */
-    .glow-bg-radial {
-      background: radial-gradient(circle at 50% 0%, rgba(225, 29, 72, 0.16) 0%, rgba(245, 158, 11, 0.08) 35%, transparent 70%);
+    /* Normal White Background with subtle warm micro-dot grid */
+    .bg-main-clean {
+      background-color: #ffffff;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(225, 29, 72, 0.05) 0%, transparent 60%),
+        radial-gradient(circle at 85% 20%, rgba(217, 119, 6, 0.04) 0%, transparent 45%),
+        radial-gradient(rgba(225, 29, 72, 0.07) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px;
     }
 
-    /* Sacred Alpona / Mandala border decor pattern */
-    .mandala-pattern {
-      background-image: radial-gradient(rgba(245, 158, 11, 0.15) 1px, transparent 0);
-      background-size: 24px 24px;
+    /* Clean Subtle Soft-Rose / Ivory Section Pattern */
+    .bg-section-pattern {
+      background-color: #fff9f9;
+      background-image: radial-gradient(rgba(225, 29, 72, 0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
     }
 
-    /* Glass card styling */
+    /* Clean White Card Styling with Soft Crimson Border & Shadow */
     .glass-card {
-      background: rgba(14, 14, 22, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(245, 158, 11, 0.18);
+      background: #ffffff;
+      border: 1px solid rgba(225, 29, 72, 0.14);
+      box-shadow: 0 4px 20px -2px rgba(225, 29, 72, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+      transition: all 0.25s ease;
     }
     .glass-card:hover {
-      border-color: rgba(245, 158, 11, 0.45);
+      border-color: rgba(225, 29, 72, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -4px rgba(225, 29, 72, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
     }
 
     .glass-header {
-      background: rgba(5, 5, 7, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(225, 29, 72, 0.12);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
     }
 
-    /* Gold gradient text */
+    /* Gold gradient text (High contrast brilliant gold on red) */
     .text-gold-gradient {
-      background: linear-gradient(135deg, #fef08a 0%, #fbbf24 45%, #d97706 100%);
+      background: linear-gradient(135deg, #fffbeb 0%, #fef08a 35%, #fbbf24 70%, #f59e0b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* Crimson flame text */
+    /* Hero Festive Sacred Red Background */
+    .bg-hero-red {
+      background-color: #881337;
+      background-image: 
+        radial-gradient(circle at 50% 15%, rgba(245, 158, 11, 0.25) 0%, transparent 60%),
+        radial-gradient(circle at 85% 60%, rgba(225, 29, 72, 0.35) 0%, transparent 50%),
+        linear-gradient(180deg, #881337 0%, #9f1239 45%, #7f1d1d 100%),
+        radial-gradient(rgba(251, 191, 36, 0.12) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+    }
+
+    /* Crimson flame text (Unchanged vibrant festive red) */
     .text-crimson-gradient {
-      background: linear-gradient(135deg, #fda4af 0%, #f43f5e 50%, #e11d48 100%);
+      background: linear-gradient(135deg, #9f1239 0%, #e11d48 50%, #f43f5e 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   </style>
 </head>
 
-<body class="bg-midnight text-gray-200 font-sans selection:bg-crimson-festive selection:text-white antialiased relative overflow-x-hidden">
-
-  <!-- Ambient Golden Diya Particles Canvas -->
-  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+<body class="bg-main-clean text-gray-800 font-sans selection:bg-crimson-festive selection:text-white antialiased relative overflow-x-hidden">
 
   <!-- Sound Ambience Controller (Web Audio Bengal Dhak Rhythm) -->
   <div class="fixed bottom-6 right-6 z-40">
-    <button id="dhakAudioBtn" class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-midnight-card/90 border border-sacred-gold/40 text-sacred-amber shadow-glow-gold hover:bg-sacred-gold hover:text-black transition-all group backdrop-blur-md text-sm font-medium">
+    <button id="dhakAudioBtn" class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white border border-crimson-festive/30 text-crimson-festive shadow-lg hover:bg-crimson-festive hover:text-white transition-all group backdrop-blur-md text-sm font-semibold">
       <span class="relative flex h-3 w-3">
-        <span id="audioPing" class="hidden absolute inline-flex h-full w-full rounded-full bg-sacred-gold opacity-75 animate-ping"></span>
-        <span id="audioDot" class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+        <span id="audioPing" class="hidden absolute inline-flex h-full w-full rounded-full bg-crimson-festive opacity-75 animate-ping"></span>
+        <span id="audioDot" class="relative inline-flex rounded-full h-3 w-3 bg-crimson-festive"></span>
       </span>
       <i data-lucide="music" class="w-4 h-4"></i>
       <span id="audioStatusText">Play Festive Dhak</span>
@@ -150,8 +147,8 @@
   </div>
 
   <!-- Toast Notification Container -->
-  <div id="toast" class="fixed top-20 right-6 z-50 transform translate-y-[-100px] opacity-0 transition-all duration-300 pointer-events-none bg-midnight-card border border-sacred-gold/60 text-white px-5 py-3 rounded-xl shadow-glow-gold flex items-center gap-3">
-    <i data-lucide="check-circle" class="w-5 h-5 text-sacred-gold"></i>
+  <div id="toast" class="fixed top-20 right-6 z-50 transform translate-y-[-100px] opacity-0 transition-all duration-300 pointer-events-none bg-white border border-crimson-festive/30 text-gray-900 px-5 py-3 rounded-xl shadow-xl flex items-center gap-3">
+    <i data-lucide="check-circle" class="w-5 h-5 text-crimson-festive"></i>
     <span id="toastMessage" class="text-sm font-medium">Copied to clipboard!</span>
   </div>
 
@@ -162,21 +159,21 @@
         
         <!-- Brand Logo & Domain Badge -->
         <a href="#home" class="flex items-center gap-3.5 group">
-          <div class="relative w-11 h-11 rounded-full bg-gradient-to-tr from-crimson-festive to-sacred-gold p-0.5 shadow-glow-crimson group-hover:shadow-glow-gold transition-all duration-300">
-            <div class="w-full h-full rounded-full bg-midnight flex items-center justify-center border border-amber-500/20">
+          <div class="relative w-11 h-11 rounded-full bg-gradient-to-tr from-crimson-festive to-sacred-gold p-0.5 shadow-glow-crimson group-hover:scale-105 transition-all duration-300">
+            <div class="w-full h-full rounded-full bg-white flex items-center justify-center border border-amber-500/20">
               <!-- Sacred Tridente / Diya Motif Icon -->
-              <i data-lucide="flame" class="w-5 h-5 text-sacred-amber group-hover:scale-110 transition-transform"></i>
+              <i data-lucide="flame" class="w-5 h-5 text-crimson-festive group-hover:scale-110 transition-transform"></i>
             </div>
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <span class="font-cinzel font-bold text-lg sm:text-xl tracking-wider text-white group-hover:text-sacred-amber transition-colors">
+              <span class="font-cinzel font-bold text-lg sm:text-xl tracking-wider text-gray-950 group-hover:text-crimson-festive transition-colors">
                 ARANGHATA SOTODAL CLUB
               </span>
             </div>
             <div class="flex items-center gap-2">
               <span class="font-bengali text-xs text-crimson-festive font-semibold tracking-wide">অরংঘাটা শতদল ক্লাব</span>
-              <span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-sacred-gold/10 text-sacred-amber border border-sacred-gold/20 font-mono">
+              <span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-crimson-festive/10 text-crimson-festive border border-crimson-festive/20 font-mono font-medium">
                 aranghatasotodalclub.com
               </span>
             </div>
@@ -185,13 +182,13 @@
 
         <!-- Desktop Navigation Links -->
         <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2">
-          <a href="#home" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-sacred-amber hover:bg-white/[0.04] transition-colors">Home</a>
-          <a href="#about" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-sacred-amber hover:bg-white/[0.04] transition-colors">About Us</a>
-          <a href="#theme" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-sacred-amber hover:bg-white/[0.04] transition-colors">Pandal Theme</a>
-          <a href="#schedule" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-sacred-amber hover:bg-white/[0.04] transition-colors">Puja Schedule</a>
-          <a href="#gallery" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-sacred-amber hover:bg-white/[0.04] transition-colors">Gallery</a>
-          <a href="#location" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-sacred-amber hover:bg-white/[0.04] transition-colors">Location</a>
-          <a href="#contact" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-sacred-amber hover:bg-white/[0.04] transition-colors">Contact</a>
+          <a href="#home" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-crimson-festive hover:bg-rose-50 transition-colors">Home</a>
+          <a href="#about" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-crimson-festive hover:bg-rose-50 transition-colors">About Us</a>
+          <a href="#theme" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-crimson-festive hover:bg-rose-50 transition-colors">Pandal Theme</a>
+          <a href="#schedule" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-crimson-festive hover:bg-rose-50 transition-colors">Puja Schedule</a>
+          <a href="#gallery" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-crimson-festive hover:bg-rose-50 transition-colors">Gallery</a>
+          <a href="#location" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-crimson-festive hover:bg-rose-50 transition-colors">Location</a>
+          <a href="#contact" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-crimson-festive hover:bg-rose-50 transition-colors">Contact</a>
         </nav>
 
         <!-- CTA & Mobile Toggle -->
@@ -202,7 +199,7 @@
           </a>
 
           <!-- Mobile Hamburger Toggle Button -->
-          <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="lg:hidden p-2 rounded-lg text-gray-300 hover:text-sacred-amber hover:bg-white/5 focus:outline-none">
+          <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="lg:hidden p-2 rounded-lg text-gray-700 hover:text-crimson-festive hover:bg-rose-50 focus:outline-none">
             <i id="menuIcon" data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
@@ -211,18 +208,18 @@
     </div>
 
     <!-- Mobile Slide-over / Dropdown Drawer -->
-    <div id="mobileMenu" class="hidden lg:hidden border-t border-amber-500/15 bg-midnight/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2">
-      <div class="px-2 py-1.5 mb-2 rounded bg-amber-500/10 border border-amber-500/20 text-xs text-sacred-amber font-mono flex items-center justify-between">
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-rose-200 bg-white/98 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 shadow-xl">
+      <div class="px-2 py-1.5 mb-2 rounded bg-rose-50 border border-rose-200 text-xs text-crimson-festive font-mono flex items-center justify-between">
         <span>Official Club Portal</span>
         <span class="font-bold">aranghatasotodalclub.com</span>
       </div>
-      <a href="#home" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-sacred-gold/10 hover:text-sacred-amber">Home</a>
-      <a href="#about" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-sacred-gold/10 hover:text-sacred-amber">About Us</a>
-      <a href="#theme" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-sacred-gold/10 hover:text-sacred-amber">Pandal & Pratima Theme</a>
-      <a href="#schedule" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-sacred-gold/10 hover:text-sacred-amber">Puja Schedule</a>
-      <a href="#gallery" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-sacred-gold/10 hover:text-sacred-amber">Photo Gallery</a>
-      <a href="#location" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-sacred-gold/10 hover:text-sacred-amber">Location & Directions</a>
-      <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-sacred-gold/10 hover:text-sacred-amber">Contact Club</a>
+      <a href="#home" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-rose-50 hover:text-crimson-festive">Home</a>
+      <a href="#about" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-rose-50 hover:text-crimson-festive">About Us</a>
+      <a href="#theme" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-rose-50 hover:text-crimson-festive">Pandal & Pratima Theme</a>
+      <a href="#schedule" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-rose-50 hover:text-crimson-festive">Puja Schedule</a>
+      <a href="#gallery" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-rose-50 hover:text-crimson-festive">Photo Gallery</a>
+      <a href="#location" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-rose-50 hover:text-crimson-festive">Location & Directions</a>
+      <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-800 hover:bg-rose-50 hover:text-crimson-festive">Contact Club</a>
       <a href="#donation" class="mobile-nav-link block text-center px-4 py-3 rounded-xl bg-gradient-to-r from-crimson-festive to-sacred-gold text-white font-semibold shadow-glow-crimson mt-4">
         Contribute / Online Donation (UPI)
       </a>
@@ -231,77 +228,76 @@
 
   <main class="relative z-10">
 
-    <!-- 1. HERO SECTION -->
-    <section id="home" class="relative min-h-[92vh] flex items-center justify-center pt-10 pb-16 overflow-hidden glow-bg-radial">
-      <!-- Ambient Backlight orbs -->
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-crimson-festive/15 rounded-full blur-[140px] pointer-events-none animate-pulseGlow"></div>
-      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[380px] h-[380px] bg-sacred-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <!-- 1. HERO SECTION (RED FESTIVE THEME) -->
+    <section id="home" class="relative min-h-[88vh] flex items-center justify-center pt-12 pb-16 overflow-hidden bg-hero-red text-white border-b-4 border-amber-500/30 shadow-xl">
+      <!-- Ambient Golden Glow -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
         <!-- Sacred Shloka Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-midnight-card/80 border border-sacred-gold/30 text-xs sm:text-sm text-sacred-amber shadow-glow-gold backdrop-blur-md mb-6">
-          <i data-lucide="sparkles" class="w-4 h-4 text-sacred-amber"></i>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/35 border border-amber-400/40 text-xs sm:text-sm text-amber-200 shadow-lg backdrop-blur-md mb-6">
+          <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
           <span class="font-bengali font-semibold tracking-wide">।। সর্বমঙ্গলা মা শ্যামা শরণ্যে ত্র্যম্বকে গৌরী নারায়ণী নমোহস্তুতে ।।</span>
         </div>
 
         <!-- Grand Titles -->
-        <h2 class="font-bengali font-bold text-xl sm:text-2xl text-sacred-amber/90 tracking-wide mb-2">
+        <h2 class="font-bengali font-bold text-xl sm:text-2xl text-amber-300 tracking-wide mb-2 drop-shadow-sm">
           অরংঘাটা শতদল ক্লাবের ৫২তম বর্ষের নিবেদন
         </h2>
-        <h1 class="font-cinzel font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white mb-4">
-          SHREE SHREE <span class="text-crimson-gradient">SHYAMA PUJA</span> <span class="text-gold-gradient">2026</span>
+        <h1 class="font-cinzel font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-white mb-4 drop-shadow-md">
+          SHREE SHREE <span class="text-amber-300 drop-shadow">SHYAMA PUJA</span> <span class="text-gold-gradient drop-shadow">2026</span>
         </h1>
 
-        <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-8">
-          Welcome to the sacred celebration of <span class="text-sacred-amber font-medium">Aranghata Sotodal Club</span>. Where age-old spiritual devotion blends harmoniously with heritage art, dazzling lights, and united community spirit in Nadia, Bengal.
+        <p class="text-base sm:text-xl text-rose-100 max-w-3xl mx-auto font-normal leading-relaxed mb-8 drop-shadow-sm">
+          Welcome to the sacred celebration of <span class="text-amber-300 font-semibold underline decoration-amber-400/40 underline-offset-4">Aranghata Sotodal Club</span>. Where age-old spiritual devotion blends harmoniously with heritage art, dazzling lights, and united community spirit in Nadia, Bengal.
         </p>
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-          <a href="#schedule" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-crimson-festive via-rose-600 to-amber-600 text-white font-semibold text-base shadow-glow-crimson hover:shadow-glow-gold hover:scale-[1.02] active:scale-95 transition-all">
-            <i data-lucide="calendar" class="w-5 h-5"></i>
+          <a href="#schedule" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 text-gray-950 font-bold text-base shadow-glow-gold hover:brightness-110 hover:scale-[1.02] active:scale-95 transition-all">
+            <i data-lucide="calendar" class="w-5 h-5 text-gray-950"></i>
             <span>View Puja Schedule</span>
           </a>
-          <a href="#location" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-midnight-card/90 border border-sacred-gold/40 text-sacred-amber hover:bg-sacred-gold/10 hover:border-sacred-gold font-medium text-base backdrop-blur-sm transition-all">
-            <i data-lucide="map-pin" class="w-5 h-5 text-sacred-amber"></i>
+          <a href="#location" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-black/30 border-2 border-white/60 text-white hover:bg-white hover:text-crimson-dark font-bold text-base backdrop-blur-sm shadow-md transition-all">
+            <i data-lucide="map-pin" class="w-5 h-5 text-amber-300"></i>
             <span>How to Reach Pandal</span>
           </a>
         </div>
 
         <!-- LIVE COUNTDOWN TIMER COMPONENT -->
-        <div class="max-w-2xl mx-auto glass-card p-6 sm:p-8 rounded-2xl shadow-glow-gold relative overflow-hidden">
-          <div class="absolute -top-12 -right-12 w-28 h-28 bg-sacred-gold/15 rounded-full blur-2xl"></div>
+        <div class="max-w-2xl mx-auto bg-black/40 border border-amber-400/40 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+          <div class="absolute -top-12 -right-12 w-28 h-28 bg-amber-400/15 rounded-full blur-2xl"></div>
           
-          <div class="flex items-center justify-center gap-2 text-sacred-amber text-xs sm:text-sm font-semibold uppercase tracking-widest mb-4">
-            <i data-lucide="clock" class="w-4 h-4"></i>
+          <div class="flex items-center justify-center gap-2 text-amber-300 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-4">
+            <i data-lucide="clock" class="w-4 h-4 text-amber-300"></i>
             <span>Countdown to Maha Amavasya Kali Puja 2026</span>
           </div>
 
           <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
             <!-- Days -->
-            <div class="bg-black/40 border border-white/5 rounded-xl p-3 sm:p-4">
+            <div class="bg-black/50 border border-white/15 rounded-xl p-3 sm:p-4 shadow-inner">
               <span id="daysCount" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-white">00</span>
-              <span class="text-[11px] sm:text-xs text-gray-400 uppercase tracking-wider mt-1 block">Days</span>
+              <span class="text-[11px] sm:text-xs text-amber-200/80 uppercase tracking-wider mt-1 block font-medium">Days</span>
             </div>
             <!-- Hours -->
-            <div class="bg-black/40 border border-white/5 rounded-xl p-3 sm:p-4">
+            <div class="bg-black/50 border border-white/15 rounded-xl p-3 sm:p-4 shadow-inner">
               <span id="hoursCount" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-white">00</span>
-              <span class="text-[11px] sm:text-xs text-gray-400 uppercase tracking-wider mt-1 block">Hours</span>
+              <span class="text-[11px] sm:text-xs text-amber-200/80 uppercase tracking-wider mt-1 block font-medium">Hours</span>
             </div>
             <!-- Minutes -->
-            <div class="bg-black/40 border border-white/5 rounded-xl p-3 sm:p-4">
+            <div class="bg-black/50 border border-white/15 rounded-xl p-3 sm:p-4 shadow-inner">
               <span id="minsCount" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-white">00</span>
-              <span class="text-[11px] sm:text-xs text-gray-400 uppercase tracking-wider mt-1 block">Minutes</span>
+              <span class="text-[11px] sm:text-xs text-amber-200/80 uppercase tracking-wider mt-1 block font-medium">Minutes</span>
             </div>
             <!-- Seconds -->
-            <div class="bg-black/40 border border-white/5 rounded-xl p-3 sm:p-4 border-amber-500/30">
-              <span id="secsCount" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-sacred-amber">00</span>
-              <span class="text-[11px] sm:text-xs text-sacred-amber uppercase tracking-wider mt-1 block font-medium">Seconds</span>
+            <div class="bg-black/50 border border-amber-400/60 rounded-xl p-3 sm:p-4 shadow-inner">
+              <span id="secsCount" class="block font-cinzel text-2xl sm:text-4xl md:text-5xl font-bold text-amber-400">00</span>
+              <span class="text-[11px] sm:text-xs text-amber-300 uppercase tracking-wider mt-1 block font-semibold">Seconds</span>
             </div>
           </div>
           
-          <p class="text-xs text-gray-400 mt-4 font-bengali">
+          <p class="text-xs text-amber-200/90 mt-4 font-bengali font-medium">
             মহানিবেদন: কার্তিকী অমাবস্যা তিথি • শুভ দীপোৎসব ও শ্যামা পূজা আরাধনা
           </p>
         </div>
@@ -311,7 +307,7 @@
 
 
     <!-- 2. ABOUT THE CLUB & LEGACY SECTION -->
-    <section id="about" class="py-20 relative bg-midnight border-t border-b border-amber-500/10">
+    <section id="about" class="py-20 relative bg-section-pattern border-t border-b border-rose-200/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-16">
@@ -319,28 +315,31 @@
             <i data-lucide="award" class="w-3.5 h-3.5"></i>
             <span>Our 52+ Years Heritage</span>
           </div>
-          <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white">
-            About <span class="text-gold-gradient">Aranghata Sotodal Club</span>
+          <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-gray-950">
+            About <span class="text-crimson-gradient">Aranghata Sotodal Club</span>
           </h2>
-          <p class="font-bengali text-lg text-sacred-amber mt-1">ঐতিহ্য, সংস্কৃতি ও জনসেবায় শতদলের আত্মনিবেদন</p>
+          <p class="font-bengali text-lg text-crimson-dark mt-1 font-medium">ঐতিহ্য, সংস্কৃতি ও জনসেবায় শতদলের আত্মনিবেদন</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <!-- Narrative Story -->
-          <div class="lg:col-span-7 space-y-6 text-gray-300 leading-relaxed font-light text-base sm:text-lg">
+          <div class="lg:col-span-7 space-y-6 text-gray-700 leading-relaxed font-normal text-base sm:text-lg">
             <p>
-              Founded with the noble mission of fostering brotherhood, preservation of Bengali folk culture, and self-less societal service, <strong class="text-white font-semibold">Aranghata Sotodal Club</strong> has grown into one of the most revered cultural landmarks in the Ranaghat subdivision of Nadia district.
+              Founded with the noble mission of fostering brotherhood, preservation of Bengali folk culture, and self-less societal service, <strong class="text-gray-950 font-semibold">Aranghata Sotodal Club</strong> has grown into one of the most revered cultural landmarks in the Ranaghat subdivision of Nadia district.
             </p>
             <p>
               What started as an intimate neighborhood worship has transformed into a prestigious cultural extravaganza attracting over one lakh devotees and visitors every Kali Puja. Yet, at our heart remains an unyielding devotion to Mother Shyama and an enduring pledge to uplift our rural surroundings.
             </p>
-            <div class="p-5 rounded-2xl glass-card border-l-4 border-l-sacred-gold">
-              <h4 class="text-white font-semibold text-base flex items-center gap-2 mb-2">
-                <i data-lucide="heart-handshake" class="w-5 h-5 text-sacred-gold"></i>
+            <p>
+              Under the visionary stewardship of our executive leadership — led by President <strong class="text-gray-950 font-semibold">Ashish Baran Ukil</strong>, Secretary <strong class="text-gray-950 font-semibold">Madhav Ghosh</strong>, Cashier <strong class="text-gray-950 font-semibold">Apurba Bhattacharya</strong>, Vice-Presidents <strong class="text-gray-950 font-semibold">Arjun Sarkar</strong> & <strong class="text-gray-950 font-semibold">Swapan Biswas</strong>, and Joint Secretaries <strong class="text-gray-950 font-semibold">Sudeb Koley</strong> & <strong class="text-gray-950 font-semibold">Sudipta Dey</strong> — Sotodal Club continues to flourish with boundless communal unity and seva.
+            </p>
+            <div class="p-5 rounded-2xl glass-card border-l-4 border-l-crimson-festive">
+              <h4 class="text-gray-950 font-semibold text-base flex items-center gap-2 mb-2">
+                <i data-lucide="heart-handshake" class="w-5 h-5 text-crimson-festive"></i>
                 Year-Round Social Responsibilities
               </h4>
-              <p class="text-sm text-gray-300">
+              <p class="text-sm text-gray-600">
                 Beyond the four days of festive illumination, Sotodal Club actively conducts annual mega blood donation camps, free medical & eye screening clinics, distribution of winter blankets to underprivileged families, and scholarships for meritorious rural students.
               </p>
             </div>
@@ -350,39 +349,143 @@
           <div class="lg:col-span-5 grid grid-cols-2 gap-4">
             
             <div class="glass-card p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
-              <div class="w-12 h-12 rounded-xl bg-sacred-gold/10 border border-sacred-gold/30 flex items-center justify-center mx-auto mb-3 text-sacred-amber group-hover:scale-110 transition-transform">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mx-auto mb-3 text-sacred-amber group-hover:scale-110 transition-transform">
                 <i data-lucide="history" class="w-6 h-6"></i>
               </div>
-              <div class="font-cinzel font-bold text-3xl sm:text-4xl text-white">52+</div>
-              <div class="text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider">Years of Glory</div>
-              <div class="text-[11px] text-sacred-amber font-bengali mt-0.5">গৌরবময় ঐতিহ্য</div>
+              <div class="font-cinzel font-bold text-3xl sm:text-4xl text-gray-950">52+</div>
+              <div class="text-xs sm:text-sm text-gray-600 mt-1 uppercase tracking-wider font-medium">Years of Glory</div>
+              <div class="text-[11px] text-crimson-dark font-bengali font-semibold mt-0.5">গৌরবময় ঐতিহ্য</div>
             </div>
 
             <div class="glass-card p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
               <div class="w-12 h-12 rounded-xl bg-crimson-festive/10 border border-crimson-festive/30 flex items-center justify-center mx-auto mb-3 text-crimson-festive group-hover:scale-110 transition-transform">
                 <i data-lucide="users" class="w-6 h-6"></i>
               </div>
-              <div class="font-cinzel font-bold text-3xl sm:text-4xl text-white">180+</div>
-              <div class="text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider">Active Volunteers</div>
-              <div class="text-[11px] text-sacred-amber font-bengali mt-0.5">নিবেদিত প্রাণ সদস্য</div>
+              <div class="font-cinzel font-bold text-3xl sm:text-4xl text-gray-950">180+</div>
+              <div class="text-xs sm:text-sm text-gray-600 mt-1 uppercase tracking-wider font-medium">Active Volunteers</div>
+              <div class="text-[11px] text-crimson-dark font-bengali font-semibold mt-0.5">নিবেদিত প্রাণ সদস্য</div>
             </div>
 
             <div class="glass-card p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
               <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mx-auto mb-3 text-sacred-amber group-hover:scale-110 transition-transform">
                 <i data-lucide="footprints" class="w-6 h-6"></i>
               </div>
-              <div class="font-cinzel font-bold text-3xl sm:text-4xl text-white">100K+</div>
-              <div class="text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider">Festive Footfall</div>
-              <div class="text-[11px] text-sacred-amber font-bengali mt-0.5">দর্শনার্থীর সমাগম</div>
+              <div class="font-cinzel font-bold text-3xl sm:text-4xl text-gray-950">100K+</div>
+              <div class="text-xs sm:text-sm text-gray-600 mt-1 uppercase tracking-wider font-medium">Festive Footfall</div>
+              <div class="text-[11px] text-crimson-dark font-bengali font-semibold mt-0.5">দর্শনার্থীর সমাগম</div>
             </div>
 
             <div class="glass-card p-6 rounded-2xl text-center group hover:-translate-y-1 transition-all duration-300">
-              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto mb-3 text-emerald-400 group-hover:scale-110 transition-transform">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto mb-3 text-emerald-600 group-hover:scale-110 transition-transform">
                 <i data-lucide="activity" class="w-6 h-6"></i>
               </div>
-              <div class="font-cinzel font-bold text-3xl sm:text-4xl text-white">350+</div>
-              <div class="text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider">Blood Donors / Yr</div>
-              <div class="text-[11px] text-sacred-amber font-bengali mt-0.5">জীবনদায়ী রক্তদান</div>
+              <div class="font-cinzel font-bold text-3xl sm:text-4xl text-gray-950">350+</div>
+              <div class="text-xs sm:text-sm text-gray-600 mt-1 uppercase tracking-wider font-medium">Blood Donors / Yr</div>
+              <div class="text-[11px] text-crimson-dark font-bengali font-semibold mt-0.5">জীবনদায়ী রক্তদান</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Executive Committee & Leadership Showcase inside About Section -->
+        <div class="mt-16 pt-12 border-t border-rose-200/80">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-crimson-festive/10 border border-crimson-festive/30 text-crimson-festive text-xs font-semibold uppercase tracking-wider mb-2">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+              <span>Executive Committee</span>
+            </div>
+            <h3 class="font-cinzel text-2xl sm:text-3xl font-bold text-gray-950">
+              Club Leadership & <span class="text-crimson-gradient">Key Office Bearers</span>
+            </h3>
+            <p class="font-bengali text-sm sm:text-base text-crimson-dark mt-1 font-medium">অরংঘাটা শতদল ক্লাবের সম্মানিত পরিচালন ও কার্যনির্বাহী কর্মকর্তা</p>
+          </div>
+
+          <!-- Top Row: President, Secretary, Cashier -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
+            
+            <!-- President -->
+            <div class="glass-card p-6 rounded-2xl border-t-2 border-t-sacred-gold text-center group hover:-translate-y-1 transition-all duration-300">
+              <div class="w-14 h-14 rounded-full bg-amber-500/15 border border-amber-500/40 flex items-center justify-center mx-auto mb-3 text-sacred-amber group-hover:scale-110 transition-transform">
+                <i data-lucide="crown" class="w-6 h-6"></i>
+              </div>
+              <div class="text-[11px] uppercase tracking-widest text-sacred-amber font-bold">President</div>
+              <div class="text-xs text-gray-500 font-bengali font-medium">সভাপতি</div>
+              <h4 class="text-gray-950 font-cinzel text-lg sm:text-xl font-bold mt-2">Ashish Baran Ukil</h4>
+              <p class="text-xs text-crimson-dark font-bengali font-semibold mt-0.5">আশীষ বরণ উকিল</p>
+            </div>
+
+            <!-- Secretary -->
+            <div class="glass-card p-6 rounded-2xl border-t-2 border-t-crimson-festive text-center group hover:-translate-y-1 transition-all duration-300">
+              <div class="w-14 h-14 rounded-full bg-crimson-festive/15 border border-crimson-festive/40 flex items-center justify-center mx-auto mb-3 text-crimson-festive group-hover:scale-110 transition-transform">
+                <i data-lucide="users" class="w-6 h-6"></i>
+              </div>
+              <div class="text-[11px] uppercase tracking-widest text-crimson-festive font-bold">Secretary</div>
+              <div class="text-xs text-gray-500 font-bengali font-medium">সম্পাদক</div>
+              <h4 class="text-gray-950 font-cinzel text-lg sm:text-xl font-bold mt-2">Madhav Ghosh</h4>
+              <p class="text-xs text-crimson-dark font-bengali font-semibold mt-0.5">মাধব ঘোষ</p>
+            </div>
+
+            <!-- Cashier -->
+            <div class="glass-card p-6 rounded-2xl border-t-2 border-t-amber-500 text-center group hover:-translate-y-1 transition-all duration-300">
+              <div class="w-14 h-14 rounded-full bg-amber-500/15 border border-amber-500/40 flex items-center justify-center mx-auto mb-3 text-sacred-amber group-hover:scale-110 transition-transform">
+                <i data-lucide="wallet" class="w-6 h-6"></i>
+              </div>
+              <div class="text-[11px] uppercase tracking-widest text-sacred-amber font-bold">Cashier</div>
+              <div class="text-xs text-gray-500 font-bengali font-medium">কোষাধ্যক্ষ / ক্যাশিয়ার</div>
+              <h4 class="text-gray-950 font-cinzel text-lg sm:text-xl font-bold mt-2">Apurba Bhattacharya</h4>
+              <p class="text-xs text-crimson-dark font-bengali font-semibold mt-0.5">অপূর্ব ভট্টাচার্য্য</p>
+            </div>
+
+          </div>
+
+          <!-- Bottom Row: Vice-Presidents & Joint Secretaries -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            
+            <!-- Vice-Presidents -->
+            <div class="glass-card p-6 rounded-2xl border-l-4 border-l-sacred-gold group hover:-translate-y-1 transition-all duration-300">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="p-2.5 rounded-xl bg-amber-500/15 text-sacred-amber">
+                  <i data-lucide="user-plus" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-gray-950 font-semibold text-base sm:text-lg">Vice-Presidents</h4>
+                  <span class="text-xs text-sacred-amber font-bengali font-semibold">সহ-সভাপতি</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-rose-100">
+                <div class="bg-rose-50/70 p-3.5 rounded-xl border border-rose-200/70">
+                  <div class="text-gray-950 font-cinzel font-bold text-base">Arjun Sarkar</div>
+                  <div class="text-xs text-gray-600 font-bengali mt-0.5">অর্জুন সরকার</div>
+                </div>
+                <div class="bg-rose-50/70 p-3.5 rounded-xl border border-rose-200/70">
+                  <div class="text-gray-950 font-cinzel font-bold text-base">Swapan Biswas</div>
+                  <div class="text-xs text-gray-600 font-bengali mt-0.5">স্বপন বিশ্বাস</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Joint Secretaries -->
+            <div class="glass-card p-6 rounded-2xl border-l-4 border-l-crimson-festive group hover:-translate-y-1 transition-all duration-300">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="p-2.5 rounded-xl bg-crimson-festive/15 text-crimson-festive">
+                  <i data-lucide="award" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="text-gray-950 font-semibold text-base sm:text-lg">Joint Secretaries</h4>
+                  <span class="text-xs text-crimson-festive font-bengali font-semibold">যুগ্ম সম্পাদক</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-rose-100">
+                <div class="bg-rose-50/70 p-3.5 rounded-xl border border-rose-200/70">
+                  <div class="text-gray-950 font-cinzel font-bold text-base">Sudeb Koley</div>
+                  <div class="text-xs text-gray-600 font-bengali mt-0.5">সুদেব কোলে</div>
+                </div>
+                <div class="bg-rose-50/70 p-3.5 rounded-xl border border-rose-200/70">
+                  <div class="text-gray-950 font-cinzel font-bold text-base">Sudipta Dey</div>
+                  <div class="text-xs text-gray-600 font-bengali mt-0.5">সুদীপ্ত দে</div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -394,32 +497,32 @@
 
 
     <!-- 3. THIS YEAR'S THEME & HIGHLIGHTS -->
-    <section id="theme" class="py-20 relative bg-midnight-card mandala-pattern">
+    <section id="theme" class="py-20 relative bg-white border-b border-rose-200/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sacred-gold/10 border border-sacred-gold/30 text-sacred-amber text-xs font-semibold uppercase tracking-wider mb-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-crimson-festive/10 border border-crimson-festive/30 text-crimson-festive text-xs font-semibold uppercase tracking-wider mb-3">
             <i data-lucide="palette" class="w-3.5 h-3.5"></i>
             <span>Mandap & Concept 2026</span>
           </div>
-          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-gray-950">
             Pandal & Pratima <span class="text-crimson-gradient">Theme</span>
           </h2>
-          <p class="font-bengali text-xl text-sacred-amber mt-2">
+          <p class="font-bengali text-xl text-crimson-dark mt-2 font-medium">
             "মাটির টান ও ডাকবিভূতির অন্বেষণ — বাংলার প্রাচীন পোড়ামাটির স্থাপত্য ও মাতৃরূপ"
           </p>
         </div>
 
         <!-- Featured Concept Showcase Card -->
-        <div class="glass-card rounded-3xl overflow-hidden border border-amber-500/30 shadow-glow-gold mb-12">
+        <div class="glass-card rounded-3xl overflow-hidden border border-rose-200 shadow-glow-box mb-12">
           <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
             
             <div class="lg:col-span-7 relative h-72 sm:h-96 lg:h-full min-h-[360px] overflow-hidden group">
               <img 
                 src="https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&w=1200&q=80" 
                 alt="Temple Architecture Terracotta Heritage"
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-90">
-              <div class="absolute inset-0 bg-gradient-to-t from-midnight-card via-transparent to-black/30"></div>
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               
               <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6">
                 <span class="inline-block px-3 py-1 rounded-md bg-crimson-festive text-white text-xs font-semibold uppercase tracking-wider mb-2">
@@ -428,26 +531,26 @@
                 <h3 class="text-white font-cinzel text-2xl sm:text-3xl font-bold">
                   Bishnupur Terracotta Sanctuary
                 </h3>
-                <p class="text-gray-300 text-xs sm:text-sm font-bengali">বাঁকুড়ার ঐতিহাসিক রাসমঞ্চ ও বিষ্ণুপুরের পোড়ামাটি কারুকার্যের আদলে মণ্ডপসজ্জা</p>
+                <p class="text-gray-200 text-xs sm:text-sm font-bengali">বাঁকুড়ার ঐতিহাসিক রাসমঞ্চ ও বিষ্ণুপুরের পোড়ামাটি কারুকার্যের আদলে মণ্ডপসজ্জা</p>
               </div>
             </div>
 
             <div class="lg:col-span-5 p-6 sm:p-10 space-y-5">
-              <h4 class="text-sacred-amber font-cinzel text-lg tracking-wider font-bold uppercase">
+              <h4 class="text-crimson-festive font-cinzel text-lg tracking-wider font-bold uppercase">
                 The Creative Vision
               </h4>
-              <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
-                This year, Aranghata Sotodal Club pays homage to the immortal terracotta artisans of Bengal. Craftsmen from Bankura and Midnapore are working over 4 months fabricating hundreds of hand-carved clay tiles depicting stories from the <em class="text-white">Shree Shree Chandi</em> and rural folklore.
+              <p class="text-gray-700 text-sm sm:text-base leading-relaxed font-normal">
+                This year, Aranghata Sotodal Club pays homage to the immortal terracotta artisans of Bengal. Craftsmen from Bankura and Midnapore are working over 4 months fabricating hundreds of hand-carved clay tiles depicting stories from the <em class="text-crimson-dark font-semibold">Shree Shree Chandi</em> and rural folklore.
               </p>
 
               <div class="space-y-3 pt-2">
                 <div class="flex items-start gap-3">
-                  <div class="p-2 rounded-lg bg-sacred-gold/10 text-sacred-amber mt-0.5">
+                  <div class="p-2 rounded-lg bg-amber-500/10 text-sacred-amber mt-0.5">
                     <i data-lucide="check" class="w-4 h-4"></i>
                   </div>
                   <div>
-                    <h5 class="text-white text-sm font-medium">Eco-Friendly & Organic Materials</h5>
-                    <p class="text-xs text-gray-400">100% natural clay, bamboo armature, jute fibers, and non-toxic herbal water colors.</p>
+                    <h5 class="text-gray-950 text-sm font-semibold">Eco-Friendly & Organic Materials</h5>
+                    <p class="text-xs text-gray-600">100% natural clay, bamboo armature, jute fibers, and non-toxic herbal water colors.</p>
                   </div>
                 </div>
 
@@ -456,8 +559,8 @@
                     <i data-lucide="check" class="w-4 h-4"></i>
                   </div>
                   <div>
-                    <h5 class="text-white text-sm font-medium">Traditional Daker Saaj & Shola Ornamentation</h5>
-                    <p class="text-xs text-gray-400">Exquisite silver foil & natural sholapith embellishments crafted by master artisans.</p>
+                    <h5 class="text-gray-950 text-sm font-semibold">Traditional Daker Saaj & Shola Ornamentation</h5>
+                    <p class="text-xs text-gray-600">Exquisite silver foil & natural sholapith embellishments crafted by master artisans.</p>
                   </div>
                 </div>
               </div>
@@ -472,12 +575,12 @@
           
           <!-- Pillar 1: Idol Artistry -->
           <div class="glass-card p-6 rounded-2xl border-t-2 border-t-sacred-gold hover:-translate-y-1.5 transition-all duration-300">
-            <div class="w-12 h-12 rounded-xl bg-sacred-gold/15 text-sacred-amber flex items-center justify-center mb-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/15 text-sacred-amber flex items-center justify-center mb-4">
               <i data-lucide="sparkles" class="w-6 h-6"></i>
             </div>
-            <h3 class="text-white font-cinzel text-xl font-bold mb-2">Divine Idol Artistry</h3>
-            <p class="text-xs text-sacred-amber font-bengali font-medium mb-3">চিরাচরিত অভয়রূপা মাতৃমূর্তি</p>
-            <p class="text-gray-300 text-sm leading-relaxed font-light">
+            <h3 class="text-gray-950 font-cinzel text-xl font-bold mb-2">Divine Idol Artistry</h3>
+            <p class="text-xs text-crimson-dark font-bengali font-semibold mb-3">চিরাচরিত অভয়রূপা মাতৃমূর্তি</p>
+            <p class="text-gray-600 text-sm leading-relaxed font-normal">
               Sculpted by renowned Kumartuli artists, the idol stands 14 feet tall, radiating benevolent calm and fierce divine power with classical large almond eyes and traditional embellishments.
             </p>
           </div>
@@ -487,21 +590,21 @@
             <div class="w-12 h-12 rounded-xl bg-crimson-festive/15 text-crimson-festive flex items-center justify-center mb-4">
               <i data-lucide="zap" class="w-6 h-6"></i>
             </div>
-            <h3 class="text-white font-cinzel text-xl font-bold mb-2">Chandannagar Illumination</h3>
-            <p class="text-xs text-sacred-amber font-bengali font-medium mb-3">চন্দননগরের বর্ণাঢ্য আলোকসজ্জা</p>
-            <p class="text-gray-300 text-sm leading-relaxed font-light">
+            <h3 class="text-gray-950 font-cinzel text-xl font-bold mb-2">Chandannagar Illumination</h3>
+            <p class="text-xs text-crimson-dark font-bengali font-semibold mb-3">চন্দননগরের বর্ণাঢ্য আলোকসজ্জা</p>
+            <p class="text-gray-600 text-sm leading-relaxed font-normal">
               Over 2 kilometers of synchronized LED arrays and animated light gates transforming the entire Aranghata station road into a shimmering sea of mythological motifs.
             </p>
           </div>
 
           <!-- Pillar 3: Cultural Symphony -->
-          <div class="glass-card p-6 rounded-2xl border-t-2 border-t-amber-400 hover:-translate-y-1.5 transition-all duration-300">
-            <div class="w-12 h-12 rounded-xl bg-amber-400/15 text-sacred-amber flex items-center justify-center mb-4">
+          <div class="glass-card p-6 rounded-2xl border-t-2 border-t-sacred-gold hover:-translate-y-1.5 transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/15 text-sacred-amber flex items-center justify-center mb-4">
               <i data-lucide="music-2" class="w-6 h-6"></i>
             </div>
-            <h3 class="text-white font-cinzel text-xl font-bold mb-2">Cultural & Musical Nights</h3>
-            <p class="text-xs text-sacred-amber font-bengali font-medium mb-3">সঙ্গীত ও নাট্য সন্ধ্যার আসর</p>
-            <p class="text-gray-300 text-sm leading-relaxed font-light">
+            <h3 class="text-gray-950 font-cinzel text-xl font-bold mb-2">Cultural & Musical Nights</h3>
+            <p class="text-xs text-crimson-dark font-bengali font-semibold mb-3">সঙ্গীত ও নাট্য সন্ধ্যার আসর</p>
+            <p class="text-gray-600 text-sm leading-relaxed font-normal">
               Four evenings of traditional Baul songs, Shyama Sangeet recitals by distinguished Bengal vocalists, folk dance performances, and one-act theatrical dramas.
             </p>
           </div>
@@ -513,7 +616,7 @@
 
 
     <!-- 4. PUJA & EVENT SCHEDULE (INTERACTIVE TABS / TIMELINE) -->
-    <section id="schedule" class="py-20 relative bg-midnight">
+    <section id="schedule" class="py-20 relative bg-section-pattern border-b border-rose-200/60">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
@@ -521,71 +624,71 @@
             <i data-lucide="clock" class="w-3.5 h-3.5"></i>
             <span>Ceremonial Timings</span>
           </div>
-          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            Puja & Festival <span class="text-gold-gradient">Schedule</span>
+          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-gray-950">
+            Puja & Festival <span class="text-crimson-gradient">Schedule</span>
           </h2>
-          <p class="font-bengali text-lg text-sacred-amber mt-2">চার দিনব্যাপী শ্রী শ্রী শ্যামা পূজার নির্ঘণ্ট ও অনুষ্ঠানসূচী</p>
+          <p class="font-bengali text-lg text-crimson-dark mt-2 font-medium">চার দিনব্যাপী শ্রী শ্রী শ্যামা পূজার নির্ঘণ্ট ও অনুষ্ঠানসূচী</p>
         </div>
 
         <!-- Tab Selectors -->
         <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
-          <button onclick="switchDay('day1')" id="tab-day1" class="schedule-tab active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-gradient-to-r from-crimson-festive to-sacred-gold text-white shadow-glow-crimson">
+          <button onclick="switchDay('day1')" id="tab-day1" class="schedule-tab active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-gradient-to-r from-crimson-festive to-amber-600 text-white shadow-glow-crimson">
             Day 1: Inauguration & Amavasya
           </button>
-          <button onclick="switchDay('day2')" id="tab-day2" class="schedule-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-midnight-card border border-amber-500/20 text-gray-300 hover:text-white hover:border-amber-500/50">
+          <button onclick="switchDay('day2')" id="tab-day2" class="schedule-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white border border-rose-200/80 text-gray-700 hover:text-crimson-festive hover:border-crimson-festive/40 shadow-sm">
             Day 2: Cultural Gala Night
           </button>
-          <button onclick="switchDay('day3')" id="tab-day3" class="schedule-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-midnight-card border border-amber-500/20 text-gray-300 hover:text-white hover:border-amber-500/50">
+          <button onclick="switchDay('day3')" id="tab-day3" class="schedule-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white border border-rose-200/80 text-gray-700 hover:text-crimson-festive hover:border-crimson-festive/40 shadow-sm">
             Day 3: Social Camp & Mahaprasad
           </button>
-          <button onclick="switchDay('day4')" id="tab-day4" class="schedule-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-midnight-card border border-amber-500/20 text-gray-300 hover:text-white hover:border-amber-500/50">
+          <button onclick="switchDay('day4')" id="tab-day4" class="schedule-tab px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-white border border-rose-200/80 text-gray-700 hover:text-crimson-festive hover:border-crimson-festive/40 shadow-sm">
             Day 4: Shobhayatra & Immersion
           </button>
         </div>
 
         <!-- Schedule Content Panels -->
-        <div class="glass-card rounded-2xl p-6 sm:p-10 border border-sacred-gold/30 shadow-glow-gold">
+        <div class="glass-card rounded-2xl p-6 sm:p-10 border border-rose-200/80 shadow-md">
           
           <!-- DAY 1 CONTENT -->
           <div id="content-day1" class="schedule-content space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-2">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-rose-100 gap-2">
               <div>
-                <h3 class="font-cinzel text-2xl font-bold text-white">Day 1: Grand Inauguration & Maha Amavasya Puja</h3>
-                <span class="text-sacred-amber text-sm font-bengali">কার্তিকী অমাবস্যা • দীপান্বিতা মহোৎসব ও মায়ের বোধন</span>
+                <h3 class="font-cinzel text-2xl font-bold text-gray-950">Day 1: Grand Inauguration & Maha Amavasya Puja</h3>
+                <span class="text-crimson-dark text-sm font-bengali font-semibold">কার্তিকী অমাবস্যা • দীপান্বিতা মহোৎসব ও মায়ের বোধন</span>
               </div>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sacred-gold/10 text-sacred-amber border border-sacred-gold/30 text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-crimson-festive border border-crimson-festive/20 text-xs font-mono font-medium">
                 <i data-lucide="sun" class="w-3.5 h-3.5"></i> Day 1 Evening - Night
               </span>
             </div>
 
-            <div class="relative border-l-2 border-sacred-gold/40 pl-6 ml-2 space-y-8">
+            <div class="relative border-l-2 border-crimson-festive/30 pl-6 ml-2 space-y-8">
               
               <div class="relative group">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-midnight shadow-glow-crimson"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">05:30 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Grand Pandal & Lighting Lighting Ceremonial Opening</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Inaugurated by esteemed dignitaries, freedom fighters' families, and local scholars with auspicious conch-blowing.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-white shadow-glow-crimson"></div>
+                <div class="text-xs font-mono text-crimson-festive font-bold">05:30 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Grand Pandal & Lighting Ceremonial Opening</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Inaugurated by esteemed dignitaries, freedom fighters' families, and local scholars with auspicious conch-blowing.</p>
               </div>
 
               <div class="relative group">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-midnight shadow-glow-gold"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">08:00 PM - 10:00 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Chandi Path & Devotional Sangeet by Local Artists</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Vedic hymns recitation by Sanskrit vidwans followed by classical sitar and vocal rendition.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-white shadow-glow-gold"></div>
+                <div class="text-xs font-mono text-sacred-amber font-bold">08:00 PM - 10:00 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Chandi Path & Devotional Sangeet by Local Artists</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Vedic hymns recitation by Sanskrit vidwans followed by classical sitar and vocal rendition.</p>
               </div>
 
               <div class="relative group">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-midnight shadow-glow-crimson"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">11:15 PM Onwards (Midnight)</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Maha Amavasya Kali Puja Rituals & Maha Yajna</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Main sacred tantric and puranic worship of Goddess Kali with 108 lotus flowers, 108 earthen lamps, and solemn Hom-yajna.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-white shadow-glow-crimson"></div>
+                <div class="text-xs font-mono text-crimson-festive font-bold">11:15 PM Onwards (Midnight)</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Maha Amavasya Kali Puja Rituals & Maha Yajna</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Main sacred tantric and puranic worship of Goddess Kali with 108 lotus flowers, 108 earthen lamps, and solemn Hom-yajna.</p>
               </div>
 
               <div class="relative group">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-amber-400 border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">03:30 AM (Brahma Muhurta)</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Maha Aarti, Pushpanjali & Bhog Nivedan</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Devotees offer sacred Pushpanjali to Maa Kali and receive sanctified Bhog prasad.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-white"></div>
+                <div class="text-xs font-mono text-sacred-amber font-bold">03:30 AM (Brahma Muhurta)</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Maha Aarti, Pushpanjali & Bhog Nivedan</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Devotees offer sacred Pushpanjali to Maa Kali and receive sanctified Bhog prasad.</p>
               </div>
 
             </div>
@@ -593,37 +696,37 @@
 
           <!-- DAY 2 CONTENT -->
           <div id="content-day2" class="schedule-content hidden space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-2">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-rose-100 gap-2">
               <div>
-                <h3 class="font-cinzel text-2xl font-bold text-white">Day 2: Cultural Symphony & Drama Evening</h3>
-                <span class="text-sacred-amber text-sm font-bengali">সাংস্কৃতিক মহোৎসব • বাউল গান ও নাট্য মঞ্চায়ন</span>
+                <h3 class="font-cinzel text-2xl font-bold text-gray-950">Day 2: Cultural Symphony & Drama Evening</h3>
+                <span class="text-crimson-dark text-sm font-bengali font-semibold">সাংস্কৃতিক মহোৎসব • বাউল গান ও নাট্য মঞ্চায়ন</span>
               </div>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sacred-gold/10 text-sacred-amber border border-sacred-gold/30 text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-crimson-festive border border-crimson-festive/20 text-xs font-mono font-medium">
                 <i data-lucide="music" class="w-3.5 h-3.5"></i> Day 2 Evening
               </span>
             </div>
 
-            <div class="relative border-l-2 border-sacred-gold/40 pl-6 ml-2 space-y-8">
+            <div class="relative border-l-2 border-crimson-festive/30 pl-6 ml-2 space-y-8">
               
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-amber-400 border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">10:00 AM - 01:00 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Children's Sit-and-Draw & Recitation Competition</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Open for school students across Aranghata and neighboring villages with medals and books awarded.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-white"></div>
+                <div class="text-xs font-mono text-sacred-amber font-bold">10:00 AM - 01:00 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Children's Sit-and-Draw & Recitation Competition</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Open for school students across Aranghata and neighboring villages with medals and books awarded.</p>
               </div>
 
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">06:30 PM - 08:30 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Shyama Sangeet & Folk Baul Sandhya</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Celebrated Bengal folk singer ensemble performing soulful devotional songs and Ektara folk tunes.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-white"></div>
+                <div class="text-xs font-mono text-crimson-festive font-bold">06:30 PM - 08:30 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Shyama Sangeet & Folk Baul Sandhya</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Celebrated Bengal folk singer ensemble performing soulful devotional songs and Ektara folk tunes.</p>
               </div>
 
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">09:00 PM - 11:30 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Staged Bengali Theatre / Jatra Extravaganza</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">A captivating socio-mythological Bengali drama staged by the Sotodal Drama Troupe.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-white"></div>
+                <div class="text-xs font-mono text-sacred-amber font-bold">09:00 PM - 11:30 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Staged Bengali Theatre / Jatra Extravaganza</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">A captivating socio-mythological Bengali drama staged by the Sotodal Drama Troupe.</p>
               </div>
 
             </div>
@@ -631,37 +734,37 @@
 
           <!-- DAY 3 CONTENT -->
           <div id="content-day3" class="schedule-content hidden space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-2">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-rose-100 gap-2">
               <div>
-                <h3 class="font-cinzel text-2xl font-bold text-white">Day 3: Social Outreach, Blood Drive & Community Feast</h3>
-                <span class="text-sacred-amber text-sm font-bengali">জনকল্যাণ শিবির, রক্তদান ও সর্বজনীন মহাপ্রসাদ বিতরণ</span>
+                <h3 class="font-cinzel text-2xl font-bold text-gray-950">Day 3: Social Outreach, Blood Drive & Community Feast</h3>
+                <span class="text-crimson-dark text-sm font-bengali font-semibold">জনকল্যাণ শিবির, রক্তদান ও সর্বজনীন মহাপ্রসাদ বিতরণ</span>
               </div>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sacred-gold/10 text-sacred-amber border border-sacred-gold/30 text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-crimson-festive border border-crimson-festive/20 text-xs font-mono font-medium">
                 <i data-lucide="heart" class="w-3.5 h-3.5"></i> Day 3 All Day
               </span>
             </div>
 
-            <div class="relative border-l-2 border-sacred-gold/40 pl-6 ml-2 space-y-8">
+            <div class="relative border-l-2 border-crimson-festive/30 pl-6 ml-2 space-y-8">
               
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">09:00 AM - 02:00 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">38th Voluntary Mega Blood Donation Camp</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Organized in association with Ranaghat Sub-Divisional Blood Bank. Over 300 expected donors.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white"></div>
+                <div class="text-xs font-mono text-emerald-700 font-bold">09:00 AM - 02:00 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">38th Voluntary Mega Blood Donation Camp</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Organized in association with Ranaghat Sub-Divisional Blood Bank. Over 300 expected donors.</p>
               </div>
 
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">12:30 PM - 04:30 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Grand Community Feast (Mahaprasad Vitran)</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Warm Khichuri, Labra, Chatni, and Payesh distributed to over 5,000 devotees and guests of all walks.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-white"></div>
+                <div class="text-xs font-mono text-sacred-amber font-bold">12:30 PM - 04:30 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Grand Community Feast (Mahaprasad Vitran)</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Warm Khichuri, Labra, Chatni, and Payesh distributed to over 5,000 devotees and guests of all walks.</p>
               </div>
 
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">07:00 PM - 10:00 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Felicitation of Meritorious Students & Elders</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Distributing educational support kits to top secondary board rank holders and honoring community stalwarts.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-white"></div>
+                <div class="text-xs font-mono text-crimson-festive font-bold">07:00 PM - 10:00 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Felicitation of Meritorious Students & Elders</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Distributing educational support kits to top secondary board rank holders and honoring community stalwarts.</p>
               </div>
 
             </div>
@@ -669,37 +772,37 @@
 
           <!-- DAY 4 CONTENT -->
           <div id="content-day4" class="schedule-content hidden space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-2">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-rose-100 gap-2">
               <div>
-                <h3 class="font-cinzel text-2xl font-bold text-white">Day 4: Grand Immersion (Bisorjon Shobhayatra)</h3>
-                <span class="text-sacred-amber text-sm font-bengali">মায়ের বিদায় বেলা • বর্ণাঢ্য শোভাযাত্রা ও নিরঞ্জন</span>
+                <h3 class="font-cinzel text-2xl font-bold text-gray-950">Day 4: Grand Immersion (Bisorjon Shobhayatra)</h3>
+                <span class="text-crimson-dark text-sm font-bengali font-semibold">মায়ের বিদায় বেলা • বর্ণাঢ্য শোভাযাত্রা ও নিরঞ্জন</span>
               </div>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sacred-gold/10 text-sacred-amber border border-sacred-gold/30 text-xs font-mono">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-crimson-festive border border-crimson-festive/20 text-xs font-mono font-medium">
                 <i data-lucide="waves" class="w-3.5 h-3.5"></i> Day 4 Afternoon - Night
               </span>
             </div>
 
-            <div class="relative border-l-2 border-sacred-gold/40 pl-6 ml-2 space-y-8">
+            <div class="relative border-l-2 border-crimson-festive/30 pl-6 ml-2 space-y-8">
               
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">03:30 PM - 05:00 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Sindoor Khela & Baran Ceremony</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Traditional farewell ritual by women devotees wishing peace, happiness, and prosperity for all households.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-crimson-festive border-2 border-white"></div>
+                <div class="text-xs font-mono text-crimson-festive font-bold">03:30 PM - 05:00 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Sindoor Khela & Baran Ceremony</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Traditional farewell ritual by women devotees wishing peace, happiness, and prosperity for all households.</p>
               </div>
 
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">06:00 PM - 09:30 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Bisorjon Carnival & Dhaki Battle</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Magnificent procession through Aranghata Main Market, accompanied by traditional Dhak, fireworks, and illuminated floats.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-white"></div>
+                <div class="text-xs font-mono text-sacred-amber font-bold">06:00 PM - 09:30 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Bisorjon Carnival & Dhaki Battle</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Magnificent procession through Aranghata Main Market, accompanied by traditional Dhak, fireworks, and illuminated floats.</p>
               </div>
 
               <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-amber-400 border-2 border-midnight"></div>
-                <div class="text-xs font-mono text-sacred-amber font-semibold">10:30 PM</div>
-                <h4 class="text-white font-medium text-lg mt-0.5">Sacred Immersion at Churni River Ghat</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">Solemn immersion in the sacred waters with anti-pollution crane guidelines, followed by Shanti Jal distribution.</p>
+                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sacred-gold border-2 border-white"></div>
+                <div class="text-xs font-mono text-sacred-amber font-bold">10:30 PM</div>
+                <h4 class="text-gray-950 font-semibold text-lg mt-0.5">Sacred Immersion at Churni River Ghat</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">Solemn immersion in the sacred waters with anti-pollution crane guidelines, followed by Shanti Jal distribution.</p>
               </div>
 
             </div>
@@ -712,27 +815,27 @@
 
 
     <!-- 5. PHOTO & VIDEO GALLERY (WITH MODAL LIGHTBOX) -->
-    <section id="gallery" class="py-20 relative bg-midnight-card border-t border-amber-500/10">
+    <section id="gallery" class="py-20 relative bg-white border-b border-rose-200/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sacred-gold/10 border border-sacred-gold/30 text-sacred-amber text-xs font-semibold uppercase tracking-wider mb-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-crimson-festive/10 border border-crimson-festive/30 text-crimson-festive text-xs font-semibold uppercase tracking-wider mb-3">
             <i data-lucide="image" class="w-3.5 h-3.5"></i>
             <span>Visual Glimpses</span>
           </div>
-          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            Moments of <span class="text-gold-gradient">Splendor</span>
+          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-gray-950">
+            Moments of <span class="text-crimson-gradient">Splendor</span>
           </h2>
-          <p class="font-bengali text-lg text-sacred-amber mt-2">বিগত বর্ষসমূহের আলোকোজ্জ্বল স্মৃতি ও পূজার মুহূর্তমালা</p>
+          <p class="font-bengali text-lg text-crimson-dark mt-2 font-medium">বিগত বর্ষসমূহের আলোকোজ্জ্বল স্মৃতি ও পূজার মুহূর্তমালা</p>
         </div>
 
         <!-- Filter Tags -->
         <div class="flex flex-wrap items-center justify-center gap-2 mb-10 text-xs sm:text-sm">
-          <button onclick="filterGallery('all')" class="gallery-filter active px-4 py-1.5 rounded-full bg-sacred-gold text-black font-semibold">All Moments</button>
-          <button onclick="filterGallery('pandal')" class="gallery-filter px-4 py-1.5 rounded-full bg-white/5 text-gray-300 hover:text-white border border-white/10">Mandap & Architecture</button>
-          <button onclick="filterGallery('pratima')" class="gallery-filter px-4 py-1.5 rounded-full bg-white/5 text-gray-300 hover:text-white border border-white/10">Divine Idol</button>
-          <button onclick="filterGallery('lights')" class="gallery-filter px-4 py-1.5 rounded-full bg-white/5 text-gray-300 hover:text-white border border-white/10">Illumination</button>
-          <button onclick="filterGallery('social')" class="gallery-filter px-4 py-1.5 rounded-full bg-white/5 text-gray-300 hover:text-white border border-white/10">Seva & Community</button>
+          <button onclick="filterGallery('all')" class="gallery-filter active px-4 py-1.5 rounded-full bg-crimson-festive text-white font-semibold shadow-glow-crimson">All Moments</button>
+          <button onclick="filterGallery('pandal')" class="gallery-filter px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200 font-medium">Mandap & Architecture</button>
+          <button onclick="filterGallery('pratima')" class="gallery-filter px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200 font-medium">Divine Idol</button>
+          <button onclick="filterGallery('lights')" class="gallery-filter px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200 font-medium">Illumination</button>
+          <button onclick="filterGallery('social')" class="gallery-filter px-4 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200 font-medium">Seva & Community</button>
         </div>
 
         <!-- Gallery Grid -->
@@ -745,10 +848,10 @@
                    alt="Illuminated Diya and Temple Sanctum" 
                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-              <span class="text-xs text-sacred-amber uppercase tracking-wider font-semibold">Mandap Glory</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              <span class="text-xs text-amber-300 uppercase tracking-wider font-semibold">Mandap Glory</span>
               <h4 class="text-white font-cinzel text-lg font-bold">Deepavali Golden Sanctum</h4>
-              <p class="text-xs text-gray-300 font-bengali">মায়ের পূজার পবিত্র প্রদীপ প্রজ্জ্বলন</p>
+              <p class="text-xs text-gray-200 font-bengali">মায়ের পূজার পবিত্র প্রদীপ প্রজ্জ্বলন</p>
             </div>
           </div>
 
@@ -759,10 +862,10 @@
                    alt="Golden Divine Sculpture" 
                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-              <span class="text-xs text-crimson-festive uppercase tracking-wider font-semibold">Divine Pratima</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              <span class="text-xs text-rose-300 uppercase tracking-wider font-semibold">Divine Pratima</span>
               <h4 class="text-white font-cinzel text-lg font-bold">Maa Shyama Traditional Murti</h4>
-              <p class="text-xs text-gray-300 font-bengali">চিরাচরিত অভয়া রূপ</p>
+              <p class="text-xs text-gray-200 font-bengali">চিরাচরিত অভয়া রূপ</p>
             </div>
           </div>
 
@@ -773,10 +876,10 @@
                    alt="Festive Lighting & Lanterns" 
                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-              <span class="text-xs text-sacred-amber uppercase tracking-wider font-semibold">Illumination</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              <span class="text-xs text-amber-300 uppercase tracking-wider font-semibold">Illumination</span>
               <h4 class="text-white font-cinzel text-lg font-bold">Chandannagar Dynamic Light Gates</h4>
-              <p class="text-xs text-gray-300 font-bengali">অরংঘাটা স্টেশন রোডের আলোকসজ্জা</p>
+              <p class="text-xs text-gray-200 font-bengali">অরংঘাটা স্টেশন রোডের আলোকসজ্জা</p>
             </div>
           </div>
 
@@ -787,10 +890,10 @@
                    alt="Heritage Terracotta Architecture" 
                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-              <span class="text-xs text-sacred-amber uppercase tracking-wider font-semibold">Architecture</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              <span class="text-xs text-amber-300 uppercase tracking-wider font-semibold">Architecture</span>
               <h4 class="text-white font-cinzel text-lg font-bold">Heritage Terracotta Murals</h4>
-              <p class="text-xs text-gray-300 font-bengali">ঐতিহাসিক টেরাকোটা অলঙ্করণ</p>
+              <p class="text-xs text-gray-200 font-bengali">ঐতিহাসিক টেরাকোটা অলঙ্করণ</p>
             </div>
           </div>
 
@@ -801,10 +904,10 @@
                    alt="Community Seva & Voluntary Blood Donation" 
                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-              <span class="text-xs text-emerald-400 uppercase tracking-wider font-semibold">Social Seva</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              <span class="text-xs text-emerald-300 uppercase tracking-wider font-semibold">Social Seva</span>
               <h4 class="text-white font-cinzel text-lg font-bold">Annual Voluntary Blood Camp</h4>
-              <p class="text-xs text-gray-300 font-bengali">শতদল ক্লাবের বার্ষিক রক্তদান উৎসব</p>
+              <p class="text-xs text-gray-200 font-bengali">শতদল ক্লাবের বার্ষিক রক্তদান উৎসব</p>
             </div>
           </div>
 
@@ -815,10 +918,10 @@
                    alt="Festive Fireworks & Dhak Celebration" 
                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-midnight via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-              <span class="text-xs text-sacred-amber uppercase tracking-wider font-semibold">Festive Night</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+              <span class="text-xs text-amber-300 uppercase tracking-wider font-semibold">Festive Night</span>
               <h4 class="text-white font-cinzel text-lg font-bold">Grand Bisorjon Fireworks</h4>
-              <p class="text-xs text-gray-300 font-bengali">ভাসান শোভাযাত্রার বর্ণিল আতশবাজি</p>
+              <p class="text-xs text-gray-200 font-bengali">ভাসান শোভাযাত্রার বর্ণিল আতশবাজি</p>
             </div>
           </div>
 
@@ -833,11 +936,11 @@
         <i data-lucide="x" class="w-6 h-6"></i>
       </button>
 
-      <button onclick="prevLightboxImage()" aria-label="Previous Image" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-sacred-amber p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all">
+      <button onclick="prevLightboxImage()" aria-label="Previous Image" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-amber-400 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all">
         <i data-lucide="chevron-left" class="w-6 h-6"></i>
       </button>
 
-      <button onclick="nextLightboxImage()" aria-label="Next Image" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-sacred-amber p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all">
+      <button onclick="nextLightboxImage()" aria-label="Next Image" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-300 hover:text-amber-400 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all">
         <i data-lucide="chevron-right" class="w-6 h-6"></i>
       </button>
 
@@ -845,25 +948,25 @@
         <img id="lightboxImg" src="" alt="Enlarged View" class="max-h-[75vh] mx-auto rounded-xl shadow-2xl object-contain border border-amber-500/20">
         <div class="mt-4">
           <h4 id="lightboxTitle" class="text-white font-cinzel text-xl font-bold"></h4>
-          <p id="lightboxDesc" class="text-sacred-amber text-sm font-bengali mt-1"></p>
+          <p id="lightboxDesc" class="text-amber-300 text-sm font-bengali mt-1"></p>
         </div>
       </div>
     </div>
 
 
     <!-- 6. LOCATION & VISITOR GUIDE -->
-    <section id="location" class="py-20 relative bg-midnight">
+    <section id="location" class="py-20 relative bg-section-pattern border-b border-rose-200/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sacred-gold/10 border border-sacred-gold/30 text-sacred-amber text-xs font-semibold uppercase tracking-wider mb-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-crimson-festive/10 border border-crimson-festive/30 text-crimson-festive text-xs font-semibold uppercase tracking-wider mb-3">
             <i data-lucide="compass" class="w-3.5 h-3.5"></i>
             <span>How to Reach</span>
           </div>
-          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            Location & <span class="text-gold-gradient">Visitor Guide</span>
+          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-gray-950">
+            Location & <span class="text-crimson-gradient">Visitor Guide</span>
           </h2>
-          <p class="font-bengali text-lg text-sacred-amber mt-2">অরংঘাটা শতদল ক্লাব প্রাঙ্গণে পৌঁছনোর বিস্তারিত পথনির্দেশ</p>
+          <p class="font-bengali text-lg text-crimson-dark mt-2 font-medium">অরংঘাটা শতদল ক্লাব প্রাঙ্গণে পৌঁছনোর বিস্তারিত পথনির্দেশ</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -873,15 +976,15 @@
             
             <!-- Train Card -->
             <div class="glass-card p-5 rounded-2xl flex items-start gap-4">
-              <div class="p-3 rounded-xl bg-sacred-gold/15 text-sacred-amber flex-shrink-0">
+              <div class="p-3 rounded-xl bg-amber-500/15 text-sacred-amber flex-shrink-0">
                 <i data-lucide="train" class="w-6 h-6"></i>
               </div>
               <div>
-                <h4 class="text-white font-semibold text-base sm:text-lg">By Local Train (Sealdah - Gede Line)</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">
-                  Get down at <strong class="text-white">Aranghata Railway Station</strong> (Eastern Railway). The puja pandal is situated just 400 meters east of Platform No. 1 (a 5-minute easy walking distance or battery-rickshaw/Toto ride).
+                <h4 class="text-gray-950 font-semibold text-base sm:text-lg">By Local Train (Sealdah - Gede Line)</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">
+                  Get down at <strong class="text-gray-950">Aranghata Railway Station</strong> (Eastern Railway). The puja pandal is situated just 400 meters east of Platform No. 1 (a 5-minute easy walking distance or battery-rickshaw/Toto ride).
                 </p>
-                <div class="mt-2 text-xs font-mono text-sacred-amber">Direct trains from Sealdah, Ranaghat, and Krishnanagar</div>
+                <div class="mt-2 text-xs font-mono text-crimson-festive font-semibold">Direct trains from Sealdah, Ranaghat, and Krishnanagar</div>
               </div>
             </div>
 
@@ -891,63 +994,102 @@
                 <i data-lucide="bus" class="w-6 h-6"></i>
               </div>
               <div>
-                <h4 class="text-white font-semibold text-base sm:text-lg">By Bus & Road Route (NH-34 / NH-12)</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">
+                <h4 class="text-gray-950 font-semibold text-base sm:text-lg">By Bus & Road Route (NH-34 / NH-12)</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">
                   From Ranaghat Junction Bus Stand (approx. 9 km), board regular local buses or auto-rickshaws towards Aranghata Bazar. Auto/Toto stands operate 24x7 throughout the festive puja days.
                 </p>
               </div>
             </div>
 
             <!-- Parking & Traffic Advisory -->
-            <div class="glass-card p-5 rounded-2xl flex items-start gap-4 border-l-4 border-l-emerald-400">
-              <div class="p-3 rounded-xl bg-emerald-400/15 text-emerald-400 flex-shrink-0">
+            <div class="glass-card p-5 rounded-2xl flex items-start gap-4 border-l-4 border-l-emerald-500">
+              <div class="p-3 rounded-xl bg-emerald-500/15 text-emerald-600 flex-shrink-0">
                 <i data-lucide="shield-check" class="w-6 h-6"></i>
               </div>
               <div>
-                <h4 class="text-white font-semibold text-base sm:text-lg">Designated Free Parking & Safety</h4>
-                <p class="text-sm text-gray-300 mt-1 font-light">
+                <h4 class="text-gray-950 font-semibold text-base sm:text-lg">Designated Free Parking & Safety</h4>
+                <p class="text-sm text-gray-600 mt-1 font-normal">
                   Designated two-wheeler and four-wheeler parking available near Aranghata High School Ground (200m from pandal). 24/7 CCTV surveillance and volunteers on duty.
                 </p>
               </div>
             </div>
 
-            <!-- Official Address badge -->
-            <div class="p-4 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between">
+            <!-- Official Address badge with reliable Google Maps links -->
+            <div class="p-4 rounded-xl bg-rose-50/90 border border-rose-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
               <div>
-                <div class="text-xs text-gray-400">Official Pandal Location:</div>
-                <div class="text-sm font-medium text-white">Aranghata Sotodal Club Grounds, Post: Aranghata, District: Nadia, West Bengal - 741501</div>
+                <div class="text-xs text-gray-500 font-semibold uppercase tracking-wider">Official Pandal Location:</div>
+                <div class="text-sm font-semibold text-gray-950">Aranghata Sotodal Club Grounds, Post: Aranghata, District: Nadia, West Bengal - 741501</div>
               </div>
-              <a href="https://maps.google.com/?q=Aranghata+Nadia+West+Bengal" target="_blank" rel="noopener noreferrer" class="ml-3 p-2.5 rounded-lg bg-sacred-gold text-black hover:brightness-110 flex-shrink-0 text-xs font-semibold flex items-center gap-1.5">
-                <i data-lucide="navigation" class="w-4 h-4"></i>
-                <span class="hidden sm:inline">Google Maps</span>
-              </a>
+              <div class="flex items-center gap-2 flex-wrap">
+                <!-- Direct universal Google Maps Web Link -->
+                <a href="https://www.google.com/maps/search/?api=1&query=Aranghata+Satadal+Club,+Aranghata,+Nadia,+West+Bengal+741501" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-sacred-gold to-amber-500 text-black font-semibold hover:brightness-110 flex-shrink-0 text-xs flex items-center gap-2 shadow-md transition-all">
+                  <i data-lucide="navigation" class="w-4 h-4"></i>
+                  <span>Open in Google Maps</span>
+                </a>
+                
+                <!-- Direct Navigation Route Link -->
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Aranghata+Satadal+Club,+Aranghata,+Nadia,+West+Bengal+741501" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="px-3 py-2.5 rounded-xl bg-crimson-festive hover:bg-crimson-dark text-white font-medium flex-shrink-0 text-xs flex items-center gap-1.5 shadow-sm transition-all">
+                  <i data-lucide="compass" class="w-4 h-4 text-white"></i>
+                  <span>Get Directions</span>
+                </a>
+
+                <!-- Mobile App Shortlink button -->
+                <a href="https://maps.app.goo.gl/wpaiyx3eYLQWm2wU9" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   title="Open in Maps App on phone" 
+                   class="p-2.5 rounded-xl bg-white hover:bg-rose-50 text-gray-700 hover:text-crimson-festive border border-rose-200 text-xs flex items-center gap-1 transition-all shadow-sm">
+                  <i data-lucide="smartphone" class="w-4 h-4 text-crimson-festive"></i>
+                  <span class="hidden md:inline">App Link</span>
+                </a>
+              </div>
             </div>
 
           </div>
 
           <!-- Interactive Map / Embed Card -->
-          <div class="lg:col-span-6 glass-card rounded-2xl overflow-hidden border border-sacred-gold/30 shadow-glow-gold flex flex-col">
-            <div class="p-4 border-b border-white/10 flex items-center justify-between bg-black/40">
+          <div class="lg:col-span-6 glass-card rounded-2xl overflow-hidden border border-rose-200/80 shadow-md flex flex-col">
+            <div class="p-4 border-b border-rose-100 flex items-center justify-between bg-rose-50/70">
               <div class="flex items-center gap-2">
-                <i data-lucide="map" class="w-4 h-4 text-sacred-amber"></i>
-                <span class="text-xs sm:text-sm font-semibold text-white">Aranghata, Nadia (741501) Area Map</span>
+                <i data-lucide="map" class="w-4 h-4 text-crimson-festive"></i>
+                <span class="text-xs sm:text-sm font-semibold text-gray-950">Aranghata Satadal Club • Live Google Map</span>
               </div>
-              <span class="text-xs text-emerald-400 flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open 24 Hours
-              </span>
+              <a href="https://www.google.com/maps/search/?api=1&query=Aranghata+Satadal+Club,+Aranghata,+Nadia,+West+Bengal+741501" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="text-xs text-crimson-festive hover:text-crimson-dark flex items-center gap-1 font-semibold transition-colors">
+                <span>Open Google Maps</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </a>
             </div>
 
-            <div class="relative w-full flex-grow min-h-[340px] bg-neutral-900">
-              <!-- OpenStreetMap iframe for precise Aranghata location with no API keys needed -->
+            <!-- Native Google Maps Embed without API key issues -->
+            <div class="relative w-full flex-grow min-h-[380px] bg-slate-100">
               <iframe 
+                id="googleMapFrame"
                 title="Aranghata Sotodal Club Location"
-                class="w-full h-full min-h-[340px] border-0 filter invert-[90%] hue-rotate-180 brightness-95 contrast-90"
+                class="w-full h-full min-h-[380px] border-0"
                 loading="lazy"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=88.5800%2C23.2300%2C88.6400%2C23.2800&amp;layer=mapnik&amp;marker=23.2555%2C88.6100">
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=Aranghata+Satadal+Club,+Aranghata,+Nadia,+West+Bengal&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed">
               </iframe>
-              <div class="absolute bottom-3 left-3 bg-midnight/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-sacred-gold/30 text-[11px] text-gray-300 pointer-events-none">
-                📍 Aranghata Sotodal Club, Nadia
-              </div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Aranghata+Satadal+Club,+Aranghata,+Nadia,+West+Bengal+741501" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="absolute bottom-3 left-3 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-xl border border-rose-200 text-xs text-gray-950 hover:text-crimson-festive flex items-center gap-2 shadow-lg transition-all group z-10 font-semibold">
+                <i data-lucide="map-pin" class="w-4 h-4 text-crimson-festive"></i>
+                <span>Aranghata Sotodal Club</span>
+                <span class="text-crimson-festive text-[11px] font-bold underline flex items-center gap-0.5 ml-1">
+                  View Full Map <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                </span>
+              </a>
             </div>
           </div>
 
@@ -958,28 +1100,28 @@
 
 
     <!-- 7. DONATION / CHANDA & UPI SECTION -->
-    <section id="donation" class="py-20 relative bg-midnight-card border-t border-amber-500/10">
+    <section id="donation" class="py-20 relative bg-white border-b border-rose-200/60">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sacred-gold/10 border border-sacred-gold/30 text-sacred-amber text-xs font-semibold uppercase tracking-wider mb-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-crimson-festive/10 border border-crimson-festive/30 text-crimson-festive text-xs font-semibold uppercase tracking-wider mb-3">
             <i data-lucide="hand-heart" class="w-3.5 h-3.5"></i>
             <span>Seva & Chanda Contribution</span>
           </div>
-          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-gray-950">
             Support Our <span class="text-crimson-gradient">Puja & Seva</span>
           </h2>
-          <p class="font-bengali text-lg text-sacred-amber mt-2">আপনার ঐকান্তিক অনুদান আমাদের সামাজিক কর্মকাণ্ড ও পূজার প্রাণশক্তি</p>
+          <p class="font-bengali text-lg text-crimson-dark mt-2 font-medium">আপনার ঐকান্তিক অনুদান আমাদের সামাজিক কর্মকাণ্ড ও পূজার প্রাণশক্তি</p>
         </div>
 
-        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-500/30 shadow-glow-gold relative overflow-hidden">
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-rose-200 shadow-glow-box relative overflow-hidden">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             
             <!-- QR Code Card -->
             <div class="md:col-span-5 text-center flex flex-col items-center">
-              <div class="relative p-4 bg-white rounded-2xl shadow-xl border-4 border-amber-500/30 inline-block group">
+              <div class="relative p-4 bg-white rounded-2xl shadow-xl border-4 border-crimson-festive/20 inline-block group">
                 <!-- SVG UPI QR Code Placeholder for sotodalclub@upi -->
-                <svg class="w-48 h-48 sm:w-52 sm:h-52 text-black" viewBox="0 0 200 200" fill="currentColor">
+                <svg class="w-48 h-48 sm:w-52 sm:h-52 text-gray-900" viewBox="0 0 200 200" fill="currentColor">
                   <!-- QR Frame & Corners -->
                   <rect x="10" y="10" width="50" height="50" fill="black" rx="8" />
                   <rect x="18" y="18" width="34" height="34" fill="white" rx="4" />
@@ -1004,9 +1146,9 @@
                   <rect x="20" y="110" width="16" height="16" fill="black" />
 
                   <!-- Center Logo Badge -->
-                  <circle cx="100" cy="100" r="24" fill="#0b0b12" />
-                  <circle cx="100" cy="100" r="20" fill="#f59e0b" />
-                  <path d="M100 88 L104 96 L112 100 L104 104 L100 112 L96 104 L88 100 L96 96 Z" fill="#9f1239" />
+                  <circle cx="100" cy="100" r="24" fill="#ffffff" />
+                  <circle cx="100" cy="100" r="20" fill="#e11d48" />
+                  <path d="M100 88 L104 96 L112 100 L104 104 L100 112 L96 104 L88 100 L96 96 Z" fill="#ffffff" />
 
                   <rect x="70" y="125" width="14" height="14" fill="black" />
                   <rect x="95" y="140" width="12" height="12" fill="black" />
@@ -1025,10 +1167,10 @@
               </div>
 
               <!-- UPI ID with Copy Button -->
-              <div class="mt-4 flex items-center gap-2 bg-black/60 border border-amber-500/30 px-3.5 py-2 rounded-xl">
-                <span class="text-xs text-gray-400">UPI ID:</span>
-                <span id="upiIdText" class="text-xs sm:text-sm font-mono text-sacred-amber font-semibold">sotodalclub@upi</span>
-                <button onclick="copyUpiId()" aria-label="Copy UPI ID" class="p-1.5 rounded-lg bg-sacred-gold/10 hover:bg-sacred-gold/20 text-sacred-amber transition-colors">
+              <div class="mt-4 flex items-center gap-2 bg-rose-50 border border-rose-200 px-3.5 py-2 rounded-xl">
+                <span class="text-xs text-gray-500 font-semibold">UPI ID:</span>
+                <span id="upiIdText" class="text-xs sm:text-sm font-mono text-crimson-festive font-bold">sotodalclub@upi</span>
+                <button onclick="copyUpiId()" aria-label="Copy UPI ID" class="p-1.5 rounded-lg bg-crimson-festive/10 hover:bg-crimson-festive/20 text-crimson-festive transition-colors">
                   <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                 </button>
               </div>
@@ -1036,32 +1178,32 @@
 
             <!-- Donation Details & Accountability -->
             <div class="md:col-span-7 space-y-4">
-              <h3 class="font-cinzel text-2xl font-bold text-white">Transparent & Purposeful Giving</h3>
-              <p class="text-gray-300 text-sm leading-relaxed font-light">
+              <h3 class="font-cinzel text-2xl font-bold text-gray-950">Transparent & Purposeful Giving</h3>
+              <p class="text-gray-700 text-sm leading-relaxed font-normal">
                 Every rupee contributed to Aranghata Sotodal Club goes directly towards managing our community festival, providing prasad to thousands of visitors, funding the 38th blood donation drive, and distributing educational kits to local students.
               </p>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
-                  <div class="text-sacred-amber text-xs font-semibold mb-1 flex items-center gap-1.5">
-                    <i data-lucide="receipt" class="w-4 h-4"></i> Money Receipt
+                <div class="p-3.5 rounded-xl bg-rose-50/60 border border-rose-200/70">
+                  <div class="text-sacred-amber text-xs font-bold mb-1 flex items-center gap-1.5">
+                    <i data-lucide="receipt" class="w-4 h-4 text-sacred-amber"></i> Money Receipt
                   </div>
-                  <p class="text-xs text-gray-400">Official club e-receipt issued upon sharing transaction ID via WhatsApp.</p>
+                  <p class="text-xs text-gray-600">Official club e-receipt issued upon sharing transaction ID via WhatsApp.</p>
                 </div>
 
-                <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
-                  <div class="text-crimson-festive text-xs font-semibold mb-1 flex items-center gap-1.5">
-                    <i data-lucide="heart" class="w-4 h-4"></i> Seva Pledge
+                <div class="p-3.5 rounded-xl bg-rose-50/60 border border-rose-200/70">
+                  <div class="text-crimson-festive text-xs font-bold mb-1 flex items-center gap-1.5">
+                    <i data-lucide="heart" class="w-4 h-4 text-crimson-festive"></i> Seva Pledge
                   </div>
-                  <p class="text-xs text-gray-400">At least 30% of puja budget allocated to year-round relief & welfare.</p>
+                  <p class="text-xs text-gray-600">At least 30% of puja budget allocated to year-round relief & welfare.</p>
                 </div>
               </div>
 
               <div class="pt-2">
                 <a href="https://wa.me/919876543210?text=Hello%20Aranghata%20Sotodal%20Club%2C%20I%20have%20contributed%20to%20the%20Kali%20Puja%20fund." 
                    target="_blank" 
-                   rel="noopener noreferrer"
-                   class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium px-4 py-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all">
+                   rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl bg-emerald-600 text-white shadow-md hover:bg-emerald-700 transition-all">
                   <i data-lucide="message-circle" class="w-4 h-4"></i>
                   <span>Send Payment Screenshot via WhatsApp</span>
                 </a>
@@ -1076,7 +1218,7 @@
 
 
     <!-- 8. CONTACT & LEADERSHIP SECTION -->
-    <section id="contact" class="py-20 relative bg-midnight">
+    <section id="contact" class="py-20 relative bg-section-pattern border-b border-rose-200/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
@@ -1084,25 +1226,25 @@
             <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
             <span>Get in Touch</span>
           </div>
-          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            Club Executive <span class="text-gold-gradient">Committee</span>
+          <h2 class="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-gray-950">
+            Club Executive <span class="text-crimson-gradient">Committee</span>
           </h2>
-          <p class="font-bengali text-lg text-sacred-amber mt-2">যোগাযোগ ও অনুসন্ধান • অরংঘাটা শতদল ক্লাব কার্যালয়</p>
+          <p class="font-bengali text-lg text-crimson-dark mt-2 font-medium">যোগাযোগ ও অনুসন্ধান • অরংঘাটা শতদল ক্লাব কার্যালয়</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           
           <!-- Contact 1: Club President -->
           <div class="glass-card p-6 rounded-2xl border-t-2 border-t-sacred-gold text-center">
-            <div class="w-14 h-14 rounded-full bg-sacred-gold/15 border border-sacred-gold/40 flex items-center justify-center mx-auto mb-4 text-sacred-amber">
-              <i data-lucide="user-check" class="w-7 h-7"></i>
+            <div class="w-14 h-14 rounded-full bg-amber-500/15 border border-amber-500/40 flex items-center justify-center mx-auto mb-4 text-sacred-amber">
+              <i data-lucide="crown" class="w-7 h-7"></i>
             </div>
-            <h3 class="text-white font-cinzel text-xl font-bold">Subrata Mukherjee</h3>
-            <p class="text-xs text-sacred-amber font-semibold uppercase tracking-wider mt-0.5">President / সভাপতি</p>
-            <p class="text-xs text-gray-400 mt-2">Overseeing festival administration & patron relations.</p>
-            <div class="mt-4 pt-4 border-t border-white/10 flex justify-center items-center gap-2 text-sm text-gray-300">
-              <i data-lucide="phone" class="w-4 h-4 text-sacred-gold"></i>
-              <a href="tel:+919832000001" class="hover:text-sacred-amber transition-colors font-mono">+91 98320 XXXXX</a>
+            <h3 class="text-gray-950 font-cinzel text-xl font-bold">Ashish Baran Ukil</h3>
+            <p class="text-xs text-sacred-amber font-bold uppercase tracking-wider mt-0.5">President / সভাপতি</p>
+            <p class="text-xs text-gray-600 mt-2">Overall festival leadership, patron relations & club administration.</p>
+            <div class="mt-4 pt-4 border-t border-rose-100 flex justify-center items-center gap-2 text-sm text-gray-700">
+              <i data-lucide="phone" class="w-4 h-4 text-sacred-amber"></i>
+              <a href="tel:+919832000001" class="hover:text-crimson-festive transition-colors font-mono font-medium">+91 98320 XXXXX</a>
             </div>
           </div>
 
@@ -1111,26 +1253,26 @@
             <div class="w-14 h-14 rounded-full bg-crimson-festive/15 border border-crimson-festive/40 flex items-center justify-center mx-auto mb-4 text-crimson-festive">
               <i data-lucide="users" class="w-7 h-7"></i>
             </div>
-            <h3 class="text-white font-cinzel text-xl font-bold">Debabrata Biswas</h3>
-            <p class="text-xs text-crimson-festive font-semibold uppercase tracking-wider mt-0.5">General Secretary / সাধারণ সম্পাদক</p>
-            <p class="text-xs text-gray-400 mt-2">Puja arrangements, volunteer coordinator & guest care.</p>
-            <div class="mt-4 pt-4 border-t border-white/10 flex justify-center items-center gap-2 text-sm text-gray-300">
+            <h3 class="text-gray-950 font-cinzel text-xl font-bold">Madhav Ghosh</h3>
+            <p class="text-xs text-crimson-festive font-bold uppercase tracking-wider mt-0.5">Secretary / সাধারণ সম্পাদক</p>
+            <p class="text-xs text-gray-600 mt-2">Puja arrangements, volunteer coordination & official correspondences.</p>
+            <div class="mt-4 pt-4 border-t border-rose-100 flex justify-center items-center gap-2 text-sm text-gray-700">
               <i data-lucide="phone" class="w-4 h-4 text-crimson-festive"></i>
-              <a href="tel:+919832000002" class="hover:text-sacred-amber transition-colors font-mono">+91 98320 XXXXX</a>
+              <a href="tel:+919832000002" class="hover:text-crimson-festive transition-colors font-mono font-medium">+91 98320 XXXXX</a>
             </div>
           </div>
 
-          <!-- Contact 3: Cultural & Social In-charge -->
-          <div class="glass-card p-6 rounded-2xl border-t-2 border-t-amber-400 text-center">
-            <div class="w-14 h-14 rounded-full bg-amber-400/15 border border-amber-400/40 flex items-center justify-center mx-auto mb-4 text-amber-400">
-              <i data-lucide="heart-pulse" class="w-7 h-7"></i>
+          <!-- Contact 3: Cashier -->
+          <div class="glass-card p-6 rounded-2xl border-t-2 border-t-amber-500 text-center">
+            <div class="w-14 h-14 rounded-full bg-amber-500/15 border border-amber-500/40 flex items-center justify-center mx-auto mb-4 text-sacred-amber">
+              <i data-lucide="wallet" class="w-7 h-7"></i>
             </div>
-            <h3 class="text-white font-cinzel text-xl font-bold">Anirban Ghosh</h3>
-            <p class="text-xs text-amber-400 font-semibold uppercase tracking-wider mt-0.5">Social & Blood Camp Convenor</p>
-            <p class="text-xs text-gray-400 mt-2">Blood donation registration & cultural inquiries.</p>
-            <div class="mt-4 pt-4 border-t border-white/10 flex justify-center items-center gap-2 text-sm text-gray-300">
-              <i data-lucide="phone" class="w-4 h-4 text-amber-400"></i>
-              <a href="tel:+919832000003" class="hover:text-sacred-amber transition-colors font-mono">+91 98320 XXXXX</a>
+            <h3 class="text-gray-950 font-cinzel text-xl font-bold">Apurba Bhattacharya</h3>
+            <p class="text-xs text-sacred-amber font-bold uppercase tracking-wider mt-0.5">Cashier / কোষাধ্যক্ষ</p>
+            <p class="text-xs text-gray-600 mt-2">Accounts, donations, receipts & financial transparency.</p>
+            <div class="mt-4 pt-4 border-t border-rose-100 flex justify-center items-center gap-2 text-sm text-gray-700">
+              <i data-lucide="phone" class="w-4 h-4 text-sacred-amber"></i>
+              <a href="tel:+919832000003" class="hover:text-crimson-festive transition-colors font-mono font-medium">+91 98320 XXXXX</a>
             </div>
           </div>
 
@@ -1139,20 +1281,20 @@
         <!-- Social Media Links Banner -->
         <div class="p-6 rounded-2xl glass-card flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <h4 class="text-white font-semibold text-base">Connect with Sotodal Club Online</h4>
-            <p class="text-xs text-gray-400 mt-0.5">Catch live streaming of Aarti and behind-the-scenes pandal making.</p>
+            <h4 class="text-gray-950 font-semibold text-base">Connect with Sotodal Club Online</h4>
+            <p class="text-xs text-gray-600 mt-0.5">Catch live streaming of Aarti and behind-the-scenes pandal making.</p>
           </div>
           <div class="flex items-center gap-3">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-sacred-amber hover:border-sacred-gold hover:bg-white/10 transition-all">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page" class="w-10 h-10 rounded-full bg-rose-50 border border-rose-200 flex items-center justify-center text-gray-700 hover:text-crimson-festive hover:border-crimson-festive hover:bg-rose-100 transition-all shadow-sm">
               <i data-lucide="facebook" class="w-5 h-5"></i>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-crimson-festive hover:border-crimson-festive hover:bg-white/10 transition-all">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel" class="w-10 h-10 rounded-full bg-rose-50 border border-rose-200 flex items-center justify-center text-gray-700 hover:text-crimson-festive hover:border-crimson-festive hover:bg-rose-100 transition-all shadow-sm">
               <i data-lucide="youtube" class="w-5 h-5"></i>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-pink-400 hover:border-pink-400 hover:bg-white/10 transition-all">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" class="w-10 h-10 rounded-full bg-rose-50 border border-rose-200 flex items-center justify-center text-gray-700 hover:text-pink-600 hover:border-pink-500 hover:bg-rose-100 transition-all shadow-sm">
               <i data-lucide="instagram" class="w-5 h-5"></i>
             </a>
-            <a href="mailto:contact@aranghatasotodalclub.com" aria-label="Email Club" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-sacred-amber hover:border-sacred-gold hover:bg-white/10 transition-all">
+            <a href="mailto:contact@aranghatasotodalclub.com" aria-label="Email Club" class="w-10 h-10 rounded-full bg-rose-50 border border-rose-200 flex items-center justify-center text-gray-700 hover:text-crimson-festive hover:border-crimson-festive hover:bg-rose-100 transition-all shadow-sm">
               <i data-lucide="mail" class="w-5 h-5"></i>
             </a>
           </div>
@@ -1164,40 +1306,40 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="bg-midnight border-t border-amber-500/20 py-12 relative z-10">
+  <footer class="bg-rose-50/90 border-t border-rose-200 py-12 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/10 text-center md:text-left">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-rose-200/80 text-center md:text-left">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-sacred-gold/15 border border-sacred-gold/40 flex items-center justify-center text-sacred-amber">
+          <div class="w-9 h-9 rounded-full bg-white border border-crimson-festive/30 flex items-center justify-center text-crimson-festive shadow-sm">
             <i data-lucide="flame" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="font-cinzel font-bold text-white tracking-wide">ARANGHATA SOTODAL CLUB</h3>
-            <span class="text-xs text-sacred-amber font-bengali">অরংঘাটা শতদল ক্লাব • নদীয়া, পশ্চিমবঙ্গ</span>
+            <h3 class="font-cinzel font-bold text-gray-950 tracking-wide">ARANGHATA SOTODAL CLUB</h3>
+            <span class="text-xs text-crimson-festive font-bengali font-semibold">অরংঘাটা শতদল ক্লাব • নদীয়া, পশ্চিমবঙ্গ</span>
           </div>
         </div>
 
-        <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400 font-medium">
-          <a href="#home" class="hover:text-sacred-amber transition-colors">Home</a>
-          <a href="#about" class="hover:text-sacred-amber transition-colors">About Legacy</a>
-          <a href="#theme" class="hover:text-sacred-amber transition-colors">2026 Theme</a>
-          <a href="#schedule" class="hover:text-sacred-amber transition-colors">Puja Nirghonto</a>
-          <a href="#gallery" class="hover:text-sacred-amber transition-colors">Gallery</a>
-          <a href="#location" class="hover:text-sacred-amber transition-colors">How to Reach</a>
-          <a href="#donation" class="hover:text-sacred-amber transition-colors">Donation</a>
+        <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-600 font-semibold">
+          <a href="#home" class="hover:text-crimson-festive transition-colors">Home</a>
+          <a href="#about" class="hover:text-crimson-festive transition-colors">About Legacy</a>
+          <a href="#theme" class="hover:text-crimson-festive transition-colors">2026 Theme</a>
+          <a href="#schedule" class="hover:text-crimson-festive transition-colors">Puja Nirghonto</a>
+          <a href="#gallery" class="hover:text-crimson-festive transition-colors">Gallery</a>
+          <a href="#location" class="hover:text-crimson-festive transition-colors">How to Reach</a>
+          <a href="#donation" class="hover:text-crimson-festive transition-colors">Donation</a>
         </div>
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-medium">
         <p>
-          &copy; 2026 <strong class="text-gray-300">Aranghata Sotodal Club</strong>. All rights reserved. 
-          <span class="font-mono text-sacred-amber ml-1">aranghatasotodalclub.com</span>
+          &copy; 2026 <strong class="text-gray-900 font-semibold">Aranghata Sotodal Club</strong>. All rights reserved. 
+          <span class="font-mono text-crimson-festive font-bold ml-1">aranghatasotodalclub.com</span>
         </p>
-        <p class="flex items-center gap-1.5 text-gray-400">
+        <p class="flex items-center gap-1.5 text-gray-600">
           <span>Crafted with devotion for Maa Shyama</span>
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sacred-gold"></i>
-          <span>Joy Maa Kali</span>
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-crimson-festive"></i>
+          <span class="font-semibold text-crimson-dark">Joy Maa Kali</span>
         </p>
       </div>
 
@@ -1212,7 +1354,6 @@
         lucide.createIcons();
       }
       initCountdown();
-      initParticles();
     });
 
     // 1. MOBILE MENU TOGGLE
@@ -1272,8 +1413,8 @@
 
       // Remove active styles from tabs
       document.querySelectorAll('.schedule-tab').forEach(tab => {
-        tab.classList.remove('bg-gradient-to-r', 'from-crimson-festive', 'to-sacred-gold', 'text-white', 'shadow-glow-crimson');
-        tab.classList.add('bg-midnight-card', 'border', 'border-amber-500/20', 'text-gray-300');
+        tab.classList.remove('bg-gradient-to-r', 'from-crimson-festive', 'to-amber-600', 'text-white', 'shadow-glow-crimson');
+        tab.classList.add('bg-white', 'border', 'border-rose-200/80', 'text-gray-700');
       });
 
       // Show selected content
@@ -1285,8 +1426,8 @@
       // Activate selected tab
       const activeTab = document.getElementById(`tab-${dayId}`);
       if (activeTab) {
-        activeTab.classList.remove('bg-midnight-card', 'border', 'border-amber-500/20', 'text-gray-300');
-        activeTab.classList.add('bg-gradient-to-r', 'from-crimson-festive', 'to-sacred-gold', 'text-white', 'shadow-glow-crimson');
+        activeTab.classList.remove('bg-white', 'border', 'border-rose-200/80', 'text-gray-700');
+        activeTab.classList.add('bg-gradient-to-r', 'from-crimson-festive', 'to-amber-600', 'text-white', 'shadow-glow-crimson');
       }
 
       if (window.lucide) lucide.createIcons();
@@ -1333,13 +1474,13 @@
       const buttons = document.querySelectorAll('.gallery-filter');
 
       buttons.forEach(btn => {
-        btn.classList.remove('bg-sacred-gold', 'text-black');
-        btn.classList.add('bg-white/5', 'text-gray-300');
+        btn.classList.remove('bg-crimson-festive', 'text-white', 'shadow-glow-crimson');
+        btn.classList.add('bg-gray-100', 'text-gray-700', 'border', 'border-gray-200');
       });
 
       // Highlight clicked button
-      event.target.classList.remove('bg-white/5', 'text-gray-300');
-      event.target.classList.add('bg-sacred-gold', 'text-black');
+      event.target.classList.remove('bg-gray-100', 'text-gray-700', 'border', 'border-gray-200');
+      event.target.classList.add('bg-crimson-festive', 'text-white', 'shadow-glow-crimson');
 
       items.forEach(item => {
         if (category === 'all' || item.classList.contains(category)) {
@@ -1413,7 +1554,6 @@
     }
 
     // 6. SYNTHETIC BENGAL FESTIVE DHAK AUDIO ENGINE (Web Audio API)
-    // Plays the iconic Bengal Kali Puja Dhak rhythm: "Dha-kiting-tak" without relying on external audio files!
     let audioCtx = null;
     let isPlayingDhak = false;
     let dhakInterval = null;
@@ -1439,7 +1579,6 @@
 
     function playKashiCymbal(time) {
       if (!audioCtx) return;
-      // High frequency metallic ping (Kanshor/Ghong)
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
 
@@ -1475,14 +1614,14 @@
         isPlayingDhak = false;
         audioStatusText.innerText = "Play Festive Dhak";
         audioPing.classList.add('hidden');
-        audioDot.classList.remove('bg-crimson-festive');
-        audioDot.classList.add('bg-amber-500');
+        audioDot.classList.remove('bg-amber-500');
+        audioDot.classList.add('bg-crimson-festive');
       } else {
         isPlayingDhak = true;
         audioStatusText.innerText = "Playing Sacred Dhak";
         audioPing.classList.remove('hidden');
-        audioDot.classList.remove('bg-amber-500');
-        audioDot.classList.add('bg-crimson-festive');
+        audioDot.classList.remove('bg-crimson-festive');
+        audioDot.classList.add('bg-amber-500');
 
         // Bengali 4/4 Puja Dhak Beat Pattern
         let step = 0;
@@ -1502,65 +1641,6 @@
         showToast("Playing authentic Bengal Dhak rhythm!");
       }
     });
-
-    // 7. AMBIENT GOLDEN FLOATING EMBER PARTICLES
-    function initParticles() {
-      const canvas = document.getElementById('ambientCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-
-      let width = (canvas.width = window.innerWidth);
-      let height = (canvas.height = window.innerHeight);
-
-      window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      });
-
-      const particles = [];
-      const particleCount = 38;
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 2 + 0.8,
-          speedY: -(Math.random() * 0.6 + 0.2),
-          speedX: (Math.random() - 0.5) * 0.4,
-          opacity: Math.random() * 0.7 + 0.3,
-          color: Math.random() > 0.4 ? '#f59e0b' : '#e11d48'
-        });
-      }
-
-      function render() {
-        ctx.clearRect(0, 0, width, height);
-        particles.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.globalAlpha = p.opacity;
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = p.color;
-          ctx.fill();
-
-          p.y += p.speedY;
-          p.x += p.speedX;
-
-          if (p.y < 0) {
-            p.y = height + 10;
-            p.x = Math.random() * width;
-          }
-          if (p.x < 0 || p.x > width) {
-            p.x = Math.random() * width;
-          }
-        });
-
-        requestAnimationFrame(render);
-      }
-
-      render();
-    }
   </script>
 </body>
 </html>
-
